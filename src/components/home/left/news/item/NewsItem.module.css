@@ -1,0 +1,40 @@
+.item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.item:last-child {
+    margin-bottom: 0px;
+}
+
+.avatar {
+    border-radius: 70px;
+    height: 35px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.avatar img {
+    width: 35px;
+    height: 35px;
+}
+
+.text {
+    margin: 0 0 0 20px;
+    text-transform: capitalize;
+}
+
+.topic {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.date {
+    margin: 8px 0px 0px 0px;
+}

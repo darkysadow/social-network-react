@@ -1,0 +1,79 @@
+.item{
+    display: flex;
+    flex-direction: column;
+}
+.top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.avatar{
+    flex: 0 0 10%;
+}
+.avatar img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.whoAndWhen{
+    flex-direction: column;
+    flex: 0 0 75%;
+}
+.who{
+    text-transform: capitalize;
+    margin: 8px 0 0 0;
+    cursor: pointer;
+}
+.when{
+    margin: 10px 0 0 0;
+    color: #666a7d;
+}
+.options{
+    /*burger menu*/
+    flex: 0 0 10%;
+}
+.post{
+    flex-direction: column;
+    margin: 20px 0;
+}
+.text{
+    line-height: 28px;
+}
+.media{
+    max-width: 100%;
+    margin: 10px 0 0 0;
+    display: flex;
+    justify-content: center;
+}
+.media img{
+    max-width: 100%;
+}
+.bottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.likes p,
+.comments p,
+.shares p{
+    padding: 0 0 0 10px;
+}
+
+.likes,
+.comments,
+.shares{
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+    transition: .5 ease;
+}
+
+.likes:hover,
+.comments:hover,
+.shares:hover{
+    color: crimson;
+}
+
+.likes{}
+.comments{}
+.shares{}
