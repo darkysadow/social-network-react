@@ -1,10 +1,10 @@
 import React from "react";
 import s from './InputForm.module.css';
 
-const InputForm = () => {
+const InputForm = (props) => {
     return(<div className={s.inputBlock}>
-        <input type="text" placeholder="Say something..."/>
-        <input type="button" value="share" />
+        <input type="text" placeholder={props.field} />
+        <input type="button" value={props.buttonText} />
     </div>);
 }
 

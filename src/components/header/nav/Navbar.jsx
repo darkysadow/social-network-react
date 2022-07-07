@@ -6,13 +6,13 @@ const Navbar = () => {
     return (
         <menu className={s.navbar}>
             <li className={s.button}>
-                <NavLink to='/home'>Home</NavLink>
+                <NavLink to='/home' activeClassName={s.selected}>Home</NavLink>
             </li>
             <li className={s.button}>
-                <NavLink to='/messages'>Messages</NavLink>
+                <NavLink to='/messages' activeClassName={s.selected}>Messages</NavLink>
             </li>
             <li className={s.button}>
-                <NavLink to="/notifications">Notifications</NavLink>
+                <NavLink to="/notifications" activeClassName={s.selected}>Notifications</NavLink>
             </li>
         </menu>
     );

@@ -5,7 +5,7 @@ import Posts from "./Posts/Posts";
 
 const HomeCenter = () => {
     return(<div className={s.center}>
-        <PostForm />
+        <PostForm field="Say anything..." buttonText='share'/>
         <Posts />
     </div>);
 }

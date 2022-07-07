@@ -4,12 +4,12 @@ import BlockStyles from './../../../block-styles/BlockStyles.module.css';
 import ava from './../../../../img/avatar.jpg';
 import InputForm from "./input/InputForm";
 
-const PostForm = () => {
-    return(<div className={`${BlockStyles.blockMargin} ${BlockStyles.blockShadow} ${s.postForm}`}>
+const PostForm = (props) => {
+    return(<div className={`${BlockStyles.blockMargin} ${BlockStyles.blockShadow} ${s.postForm} ${props.customClassName}`}>
         <div className={s.avatar}>
             <img src={ava} alt="" />
         </div>
-        <InputForm />
+        <InputForm field={props.field} buttonText={props.buttonText}/>
     </div>);
 }
 
