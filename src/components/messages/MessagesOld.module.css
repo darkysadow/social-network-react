@@ -1,0 +1,96 @@
+/*.messages {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 70%;
+}
+
+.messagesBar {
+    display: flex;
+    flex: 0 0 25%;
+    flex-direction: column;
+    height: inherit;
+}
+
+.messagesList {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    max-height: inherit;
+}
+
+.dialog{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 2px;
+    position: relative;
+}
+.dialog::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(64, 64, 64, 0.1);
+    bottom: 0px;
+    left: 0%;
+}
+.dialog:last-child::before{
+    height: 0px;
+}
+.dialogAvatar{
+    flex: 0 0 25%;
+    height: 50px;
+    width: 50px;
+}
+.dialogAvatar img{
+    max-width: 100%;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+
+.dialogTextData{
+    position: relative;
+    max-width: 100%;
+    flex: 0 0 75%;
+}
+
+.dialogNickname{
+    text-transform: capitalize;
+    margin: 5px 0 0 0;
+    width: 100%;
+}
+
+.dialogLastMessage{
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+}
+.messagesBar__title{
+
+}
+
+
+.messagesSheet {
+    display: flex;
+    height: 100%;
+    flex: 0 0 70%;
+}
+
+.messagesField {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.fieldHeader{}
+.field{
+    flex: 1 1 auto;
+}
+.inputForm{}*/
+
+.messages{}
+.screenHeight{}
+.messagesRightSide{}
+.messagesLeftSide{}

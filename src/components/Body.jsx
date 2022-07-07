@@ -1,21 +1,22 @@
 import React from 'react';
 import Home from './home/Home';
-import './Body.module.css';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Messages from './messages/Messages';
+import s from './Body.module.css';
+import { Route, Routes } from "react-router-dom";
+
 
 
 
 const Body = () => {
-    return (<BrowserRouter>
-        <main>
+    return (
+        <main className={s.main}>
             <div className="container">
                 <Routes>
-                    <Route path="/*" element={<Home />} />
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/*" element={<Messages />} />
                 </Routes>
-                <Home />
             </div>
         </main>
-    </BrowserRouter>
     );
 }
 
