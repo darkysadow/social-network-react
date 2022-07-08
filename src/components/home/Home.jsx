@@ -4,10 +4,10 @@ import s from './Home.module.css';
 import HomeLeft from "./left/HomeLeft";
 import HomeRight from "./right/HomeRight";
 
-const Home = () => {
+const Home = (props) => {
     return(<div className={s.home}>
         <HomeLeft />
-        <HomeCenter />
+        <HomeCenter posts={props.posts}/>
         <HomeRight />
     </div>);
 }
