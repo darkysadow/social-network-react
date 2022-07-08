@@ -3,10 +3,11 @@ import s from './Messages.module.css';
 import DialogsBar from "./dialogsBar/DialogsBar";
 import MessagesField from "./messagesField/MessagesField";
 
-const Messages = () => {
+const Messages = (props) => {
+
     return (<div className={s.messages}>
-        <DialogsBar />
-        <MessagesField />
+        <DialogsBar  dialogsData={props.dialogsData}/>
+        <MessagesField messagesData={props.messagesData}/>
     </div>);
 }
 

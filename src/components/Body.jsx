@@ -7,13 +7,14 @@ import { Route, Routes } from "react-router-dom";
 
 
 
-const Body = () => {
+const Body = (props) => {
+
     return (
         <main className={s.main}>
             <div className="container">
                 <Routes>
                     <Route path="/home" element={<Home />} />
-                    <Route path="/*" element={<Messages />} />
+                    <Route path="/*" element={<Messages messagesData={props.messagesData} dialogsData={props.dialogsData}/>} />
                 </Routes>
             </div>
         </main>

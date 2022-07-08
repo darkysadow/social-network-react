@@ -4,23 +4,16 @@ import BlockStyles from './../../block-styles/BlockStyles.module.css';
 import PostForm from './../../home/center/PostForm/PostForm';
 import ava1 from './../../../img/pages8.jpg';
 
-const MessagesField = () => {
-    const Message = (props) => {
-        return (
-            <div className={s.message}>
-                <p>{props.text}</p>
-            </div>
-        );
-    }
+const MessagesField = (props) => {
     
-    let messagesData = [
-        { text: 'Йоу, собакі, я Наруто Узумакі. Шо?', id: '1' },
-        { text: 'Ачу?', id: '2' },
-        { text: 'KMVmkvmropem oe meriomv eokm vemriovmervoerfmvekrmer lkvmerovpmervprme vpmp M mwPMpm vmMVlkml;kmrverfmvl;v;lvm;', id: '3' },
-        { text: ' GJbhijLM C PO dmvcodkcmdpcd cO:MN k nvimv V Nofvnfkvpm  mnopm v smpdm ,cm dp[s,dn viomdsplvsmdvdsmvdsmvpod opm vsdvndoiwec,:ncdvkjno im vjspomvp vspdvkvdvm,dvdnf p ioMJoid mniosvvdn cs,', id: '4' }
-    ]
-    
-    let messages = messagesData.map(msg => (<Message text={msg.text} />));
+const Message = (props) => {
+    return (
+        <div className={s.message}>
+            <p>{props.text}</p>
+        </div>
+    );
+}
+let messages = props.messagesData.map(msg => (<Message text={msg.text} />));
 
     return (<div className={s.messagesRight}>
         <div className={`${s.messagesField} ${BlockStyles.blockShadow} ${BlockStyles.blockMargin}`}>
@@ -44,6 +37,7 @@ const MessagesField = () => {
             </div>
         </div>
     </div>);
+    
 }
 
 export default MessagesField;

@@ -6,12 +6,13 @@ import { BrowserRouter } from "react-router-dom";
 
 
 
-function App() {
+function App(props) {
+
   return (
     <div className="wrapper">
       <BrowserRouter>
         <Header />
-        <Body />
+        <Body messagesData={props.messagesData} dialogsData={props.dialogsData}/>
         <footer></footer>
       </BrowserRouter>
     </div>
