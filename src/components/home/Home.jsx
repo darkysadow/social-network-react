@@ -7,7 +7,7 @@ import HomeRight from "./right/HomeRight";
 const Home = (props) => {
     return(<div className={s.home}>
         <HomeLeft />
-        <HomeCenter posts={props.posts}/>
+        <HomeCenter posts={props.state.posts}/>
         <HomeRight />
     </div>);
 }

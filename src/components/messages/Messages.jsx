@@ -6,8 +6,8 @@ import MessagesField from "./messagesField/MessagesField";
 const Messages = (props) => {
 
     return (<div className={s.messages}>
-        <DialogsBar  dialogsData={props.dialogsData}/>
-        <MessagesField messagesData={props.messagesData}/>
+        <DialogsBar  dialogsData={props.state.dialogsData}/>
+        <MessagesField messagesData={props.state.messagesData}/>
     </div>);
 }
 

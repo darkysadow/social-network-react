@@ -13,8 +13,8 @@ const Body = (props) => {
         <main className={s.main}>
             <div className="container">
                 <Routes>
-                    <Route path="/home" element={<Home posts={props.posts} />} />
-                    <Route path="/*" element={<Messages messagesData={props.messagesData} dialogsData={props.dialogsData}/>} />
+                    <Route path="/home" element={<Home state={props.state.homePage} />} />
+                    <Route path="/*" element={<Messages state={props.state.messagesPage}/>} />
                 </Routes>
             </div>
         </main>

@@ -12,7 +12,7 @@ function App(props) {
     <div className="wrapper">
       <BrowserRouter>
         <Header />
-        <Body messagesData={props.messagesData} dialogsData={props.dialogsData} posts={props.posts}/>
+        <Body state={props.state}/>
         <footer></footer>
       </BrowserRouter>
     </div>
