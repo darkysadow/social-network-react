@@ -12,7 +12,7 @@ function App(props) {
     <div className="wrapper">
       <BrowserRouter>
         <Header />
-        <Body state={props.state}/>
+        <Body state={props.state} addPost={props.addPost}/>
         <footer></footer>
       </BrowserRouter>
     </div>

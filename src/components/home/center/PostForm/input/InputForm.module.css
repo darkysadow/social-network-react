@@ -21,6 +21,10 @@
 }
 
 .inputBlock input[type="button"] {
+    
+}
+
+button {
     position: absolute;
     width: 20%;
     height: 80%;

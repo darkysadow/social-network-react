@@ -34,4 +34,17 @@ let state = {
     }
 };
 
+export let addPost = (when, postText) => {
+    let newPost = {
+        avatar: pages1,
+        who: "mc petya",
+        when: when,
+        text: postText,
+        likes: '0',
+        comments: '0',
+        shares: "0"
+    };
+    state.homePage.posts.push(newPost);
+};
+
 export default state;
