@@ -7,6 +7,7 @@ import pages1 from "./../img/pages5.jpg";
 import pages2 from "./../img/pages6.jpg";
 import pages3 from "./../img/pages7.jpg";
 import media1 from "./../img/korneplodMem.jpg";
+import { rerenderEntrieTree } from '../render';
 
 let state = {
     homePage: {
@@ -45,6 +46,7 @@ export let addPost = (when, postText) => {
         shares: "0"
     };
     state.homePage.posts.push(newPost);
+    rerenderEntrieTree(state);
 };
 
 export default state;
