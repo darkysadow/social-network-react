@@ -1,9 +1,9 @@
 import React from "react";
 import s from './../Messages.module.css';
 import BlockStyles from './../../block-styles/BlockStyles.module.css';
-import PostForm from './../../home/center/PostForm/PostForm';
 import ava1 from './../../../img/pages8.jpg';
 import Message from "./message/Message";
+import InputMessageArea from "./inputArea/InputMessageArea";
 
 const MessagesField = (props) => {
     
@@ -25,9 +25,10 @@ let messages = props.messagesData.map(msg => (<Message text={msg.text} />));
             </div>
             <div className={s.field}>
                 {messages}
+
             </div>
             <div className={s.inputForm}>
-                <PostForm field="Type your message here..." buttonText='send' customClassName={s.postForm} />
+                <InputMessageArea />
             </div>
         </div>
     </div>);

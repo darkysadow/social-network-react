@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+.inputBlock{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px 0 0 0;
+    position: relative;
+}
+.inputBlock::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(64, 64, 64, 0.1);
+    top: -15px;
+    left: 0px;
+}
+.inputArea{
+    width: 100%;
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: row;
+}
+.inputArea textarea{
+    flex: 0 0 80%;
+    background-color: rgb(238, 237, 245);
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    box-shadow: 0 0 5px 0px rgba(27, 45, 51,0.3) inset;
+    padding: 10px 20px;
+    /*padding: 25px 10px;*/
+    overflow-y: visible;
+    font-family: "Roboto", sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+    resize: none;
+}
+.inputArea button{
+    flex: 0 0 20%;
+    background-color: #3293aa;
+    text-transform: uppercase;
+    color: white;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    font-family: "Roboto", sans-serif;
+	font-weight: 500;
+	font-size: 14px;
+    transition: .5s ease;
+}
+
+.inputArea button:hover{
+    background-color: black;
+}
+/*
+.postForm{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.avatar{
+    width: 50px;
+    height: 50px;
+    
+}
+
+.avatar img{
+    max-width: 100%;
+    border-radius: 50%;
+}
+
+.inputBlock{
+    width: 100%;
+    position: relative;
+    flex: 0 0 85%;
+    
+}
+
+.inputBlock input[type="text"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(238, 237, 245);
+    border-radius: 50px;
+    box-shadow: 0 0 5px 0px rgba(27, 45, 51,0.3) inset;
+    padding: 0 25% 0 5%;
+    font-family: "Roboto", sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+}
+
+.inputBlock input[type="button"] {
+    position: absolute;
+    width: 20%;
+    height: 80%;
+    top: 10%;
+    right: 5px;
+    background-color: #3293aa;
+    text-transform: uppercase;
+    color: white;
+    border-radius: 50px;
+    font-family: "Roboto", sans-serif;
+	font-weight: 500;
+	font-size: 14px;
+    transition: .5s ease;
+}
+
+.inputBlock input[type="button"]:hover {
+    background-color: black;
+}
+*/
