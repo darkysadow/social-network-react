@@ -1,8 +1,8 @@
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import state from './redux/state';
+import ReactDOM from 'react-dom/client';
 import { rerenderEntrieTree } from './render';
-
 rerenderEntrieTree(state);
 
 // If you want to start measuring performance in your app, pass a function

@@ -16,7 +16,8 @@ let state = {
             { avatar: pages2, who: 'victor korneplod', when: '25 minutes ago', text: 'Я уже рядом...', media: media1, likes: '22', comments: '1', shares: '23' },
             { avatar: pages1, who: 'mc petya', when: '30 minutes ago', text: 'Їм цібулю, захищаюсь від вірусу', likes: '1488', comments: '201', shares: '91' },
             { avatar: pages3, who: 'Чистий Сьодня', when: '1 hour ago', text: 'Я не курив, я не употребляв наркотіки зараз. На данний момєнт, я чистий стою перед вами...', media: pages3, likes: '1488', comments: '201', shares: '91' }
-        ]
+        ],
+        newPostMessage: ""
     },
     messagesPage: {
         messagesData: [
@@ -46,6 +47,11 @@ export let addPost = (when, postText) => {
         shares: "0"
     };
     state.homePage.posts.push(newPost);
+    rerenderEntrieTree(state);
+};
+
+export let updateNewText = (newText) => {
+    state.homePage.newPostMessage = newText;
     rerenderEntrieTree(state);
 };
 
