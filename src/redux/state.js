@@ -36,12 +36,12 @@ let state = {
     }
 };
 
-export let addPost = (when, postText) => {
+export let addPost = (when) => {
     let newPost = {
         avatar: pages1,
         who: "mc petya",
         when: when,
-        text: postText,
+        text: state.homePage.newPostMessage,
         likes: '0',
         comments: '0',
         shares: "0"

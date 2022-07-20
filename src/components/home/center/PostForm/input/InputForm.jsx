@@ -4,8 +4,7 @@ import s from './InputForm.module.css';
 const InputForm = (props) => {
     let newPostElem = React.createRef();
     let addPost = () => {
-        let text = newPostElem.current.value;
-        props.addPost('2 minutes ago', text);
+        props.addPost('2 minutes ago');
         props.updateNewText('');
     }
     let onTextChange = () => {
