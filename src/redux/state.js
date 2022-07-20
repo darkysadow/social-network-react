@@ -37,7 +37,8 @@ let state = {
 };
 
 export let addPost = (when) => {
-    let newPost = {
+    if(state.homePage.newPostMessage != "" && state.homePage.newPostMessage != " ")
+    {let newPost = {
         avatar: pages1,
         who: "mc petya",
         when: when,
@@ -47,7 +48,7 @@ export let addPost = (when) => {
         shares: "0"
     };
     state.homePage.posts.push(newPost);
-    rerenderEntrieTree(state);
+    rerenderEntrieTree(state);}
 };
 
 export let updateNewText = (newText) => {
