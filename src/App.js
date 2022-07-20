@@ -12,7 +12,7 @@ function App(props) {
     <div className="wrapper">
       <BrowserRouter>
         <Header />
-        <Body state={props.state} addPost={props.addPost} updateNewText={props.updateNewText}/>
+        <Body state={props.state} addPost={props.addPost} updateNewPostText={props.updateNewPostText} sendMessage={props.sendMessage} updateNewMessage={props.updateNewMessage}/>
         <footer></footer>
       </BrowserRouter>
     </div>

@@ -4,10 +4,12 @@ import BlockStyles from './../../block-styles/BlockStyles.module.css';
 import ava1 from './../../../img/pages8.jpg';
 import Message from "./message/Message";
 import InputMessageArea from "./inputArea/InputMessageArea";
+import YourMessage from "./inputArea/yourMessage/YourMessage";
 
 const MessagesField = (props) => {
     
 let messages = props.messagesData.map(msg => (<Message text={msg.text} />));
+let myMessages = props.userMessagesData.map(msg => (<YourMessage text={msg.text} />));
 
     return (<div className={s.messagesRight}>
         <div className={`${s.messagesField} ${BlockStyles.blockShadow} ${BlockStyles.blockMargin}`}>
@@ -25,10 +27,10 @@ let messages = props.messagesData.map(msg => (<Message text={msg.text} />));
             </div>
             <div className={s.field}>
                 {messages}
-
+                {myMessages}
             </div>
             <div className={s.inputForm}>
-                <InputMessageArea />
+                <InputMessageArea sendMessage={props.sendMessage} updateNewMessage={props.updateNewMessage} newMessageText={props.newMessageText}/>
             </div>
         </div>
     </div>);

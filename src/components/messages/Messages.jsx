@@ -7,8 +7,8 @@ const Messages = (props) => {
 
     return (<div className={s.messages}>
         <DialogsBar  dialogsData={props.state.dialogsData}/>
-        <MessagesField messagesData={props.state.messagesData}/>
+        <MessagesField messagesData={props.state.messagesData} userMessagesData={props.state.userMessagesData} newMessageText={props.state.newMessageText} sendMessage={props.sendMessage} updateNewMessage={props.updateNewMessage}/>
     </div>);
 }
-
+{/*newMessageText={props.messagesData.newMessageText}*/}
 export default Messages;

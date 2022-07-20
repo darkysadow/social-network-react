@@ -5,14 +5,14 @@ const InputForm = (props) => {
     let newPostElem = React.createRef();
     let addPost = () => {
         props.addPost('2 minutes ago');
-        props.updateNewText('');
+        props.updateNewPostText("");
     }
     let onTextChange = () => {
         let text = newPostElem.current.value;
-        props.updateNewText(text);
+        props.updateNewPostText(text);
     }
     return (<div className={s.inputBlock}>
-        <textarea placeholder={props.field} ref={newPostElem} onChange={onTextChange} value={props.newPostMessage}/>
+        <textarea placeholder={props.field} ref={newPostElem} onChange={onTextChange} value={props.newPostText}/>
         <button onClick={addPost}>{props.buttonText}</button>
     </div>);
 }

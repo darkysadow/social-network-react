@@ -17,7 +17,7 @@ let state = {
             { avatar: pages1, who: 'mc petya', when: '30 minutes ago', text: 'Їм цібулю, захищаюсь від вірусу', likes: '1488', comments: '201', shares: '91' },
             { avatar: pages3, who: 'Чистий Сьодня', when: '1 hour ago', text: 'Я не курив, я не употребляв наркотіки зараз. На данний момєнт, я чистий стою перед вами...', media: pages3, likes: '1488', comments: '201', shares: '91' }
         ],
-        newPostMessage: ""
+        newPostText: ""
     },
     messagesPage: {
         messagesData: [
@@ -26,6 +26,8 @@ let state = {
             { text: 'KMVmkvmropem oe meriomv eokm vemriovmervoerfmvekrmer lkvmerovpmervprme vpmp M mwPMpm vmMVlkml;kmrverfmvl;v;lvm;', id: '3' },
             { text: ' GJbhijLM C PO dmvcodkcmdpcd cO:MN k nvimv V Nofvnfkvpm  mnopm v smpdm ,cm dp[s,dn viomdsplvsmdvdsmvdsmvpod opm vsdvndoiwec,:ncdvkjno im vjspomvp vspdvkvdvm,dvdnf p ioMJoid mniosvvdn cs,', id: '4' }
         ],
+        userMessagesData: [],
+        newMessageText: '',
         dialogsData: [
             { name: "billy", surname: "herrington", ava: ava1, lastMessage: "Let`s celebrate...", id: 'user1' },
             { name: "petro", surname: "mostavchuk", ava: ava2, lastMessage: "Aleksiyk Yana!", id: 'user2' },
@@ -37,23 +39,40 @@ let state = {
 };
 
 export let addPost = (when) => {
-    if(state.homePage.newPostMessage != "" && state.homePage.newPostMessage != " ")
-    {let newPost = {
-        avatar: pages1,
-        who: "mc petya",
-        when: when,
-        text: state.homePage.newPostMessage,
-        likes: '0',
-        comments: '0',
-        shares: "0"
-    };
-    state.homePage.posts.push(newPost);
-    rerenderEntrieTree(state);}
+    if (state.homePage.newPostText !== "" && state.homePage.newPostText !== " ") {
+        let newPost = {
+            avatar: pages1,
+            who: "mc petya",
+            when: when,
+            text: state.homePage.newPostText,
+            likes: '0',
+            comments: '0',
+            shares: "0"
+        };
+        state.homePage.posts.push(newPost);
+        rerenderEntrieTree(state);
+    }
 };
 
-export let updateNewText = (newText) => {
-    state.homePage.newPostMessage = newText;
+export let updateNewPostText = (newText) => {
+    state.homePage.newPostText = newText;
     rerenderEntrieTree(state);
 };
+
+export let sendMessage = () => {
+    if (state.messagesPage.newMessageText !== "") {
+        let newMessage = {
+            text: state.messagesPage.newMessageText
+        };
+        state.messagesPage.userMessagesData.push(newMessage);
+        rerenderEntrieTree(state);
+    }
+};
+
+export let updateNewMessage = (newText) => {
+    state.messagesPage.newMessageText = newText;
+    rerenderEntrieTree(state);
+};
+
 
 export default state;

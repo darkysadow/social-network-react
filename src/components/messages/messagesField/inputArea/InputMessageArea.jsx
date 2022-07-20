@@ -5,15 +5,20 @@ const InputMessageArea = (props) => {
     let textAreaRef = React.createRef();
 
     let sendMsg = () => {
-        let userText = textAreaRef.current.value;
+        props.sendMessage();
+        props.updateNewMessage('');
     };
+    let onTextChange = () => {
+        let text = textAreaRef.current.value;
+        props.updateNewMessage(text);
 
+    };
     return (<div className={`${s.inputBlock}`}>
         <div className={s.inputArea}>
-            <textarea placeholder='  Type your message here...' ref={textAreaRef}></textarea>
+            <textarea placeholder='  Type your message here...' onChange={onTextChange} ref={textAreaRef} value={props.newMessageText}/>
             <button onClick={sendMsg}>send</button>
         </div>
     </div>);
 }
-
+{/*sendMessage={props.sendMessage} updateNewMessage={props.updateNewMessage}*/}
 export default InputMessageArea;

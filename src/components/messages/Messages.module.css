@@ -137,8 +137,13 @@
     justify-content: flex-end;
 }
 
+.messageContainer{
+    display: flex;
+    justify-content: flex-start;
+}
+
 .message{
-    max-width: 70%;
+    max-width: 70%;    
     background-color: aliceblue;
     padding: 15px;
     margin: 10px 0 0 0;
@@ -148,7 +153,6 @@
 }
 
 .message p{
-    width: 100%;
     font-family: "Roboto" sans-serif;
     font-size: 15px;
     font-weight: 400;
@@ -158,4 +162,21 @@
 
 .postForm {
     margin: 0;
+}
+
+
+.yourMessageContainer{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.yourMessage{
+    max-width: 70%;
+    background-color: lightcyan;
+    text-align: right;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 0px;
+}
+
+.yourMessage p {
 }
