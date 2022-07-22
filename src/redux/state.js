@@ -7,7 +7,10 @@ import pages1 from "./../img/pages5.jpg";
 import pages2 from "./../img/pages6.jpg";
 import pages3 from "./../img/pages7.jpg";
 import media1 from "./../img/korneplodMem.jpg";
-import { rerenderEntrieTree } from '../render';
+
+let rerenderEntrieTree = () => {
+    console.log('');
+}
 
 let state = {
     homePage: {
@@ -74,5 +77,9 @@ export let updateNewMessage = (newText) => {
     rerenderEntrieTree(state);
 };
 
+
+export const subscribe = (observer) => {
+    rerenderEntrieTree = observer;
+}
 
 export default state;
