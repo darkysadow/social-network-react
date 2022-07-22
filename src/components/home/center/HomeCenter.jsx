@@ -5,8 +5,8 @@ import Posts from "./Posts/Posts";
 
 const HomeCenter = (props) => {
     return(<div className={s.center}>
-        <PostForm field="Say anything..." buttonText='share' addPost={props.addPost} updateNewPostText={props.updateNewPostText} newPostText={props.newPostText}/>
-        <Posts posts={props.posts}/>
+        <PostForm field="Say anything..." buttonText='share' store={props.store}/>
+        <Posts store={props.store}/>
     </div>);
 }
 

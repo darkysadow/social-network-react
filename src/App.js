@@ -12,7 +12,8 @@ function App(props) {
     <div className="wrapper">
       <BrowserRouter>
         <Header />
-        <Body state={props.state} addPost={props.addPost} updateNewPostText={props.updateNewPostText} sendMessage={props.sendMessage} updateNewMessage={props.updateNewMessage}/>
+        {/*<Body state={props.state} addPost={props.addPost} updateNewPostText={props.updateNewPostText} sendMessage={props.sendMessage} updateNewMessage={props.updateNewMessage}/>*/}
+        <Body store={props.store} />
         <footer></footer>
       </BrowserRouter>
     </div>
