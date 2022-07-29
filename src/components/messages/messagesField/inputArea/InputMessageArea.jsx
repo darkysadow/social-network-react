@@ -1,16 +1,17 @@
 import React from "react";
+import { sendMessageActionCreator, setNewMessageTextActionCreator } from "../../../../redux/state";
 import s from './InputMessageArea.module.css';
 
 const InputMessageArea = (props) => {
     let textAreaRef = React.createRef();
 
     let sendMsg = () => {
-        props.store.dispatch({type:'SEND-MESSAGE'})/*sendMessage()*/;
-        props.store.dispatch({type:'SET-NEW-MESSAGE-TEXT', newText:''})/*setNewMessageText('')*/;
+        props.store.dispatch(sendMessageActionCreator())/*sendMessage()*/;
+        props.store.dispatch(setNewMessageTextActionCreator(''))/*setNewMessageText('')*/;
     };
     let onTextChange = () => {
         let text = textAreaRef.current.value;
-        props.store.dispatch({type:'SET-NEW-MESSAGE-TEXT', newText:text})/*setNewMessageText(text)*/;
+        props.store.dispatch(setNewMessageTextActionCreator(text))/*setNewMessageText(text)*/;
 
     };
     return (<div className={`${s.inputBlock}`}>
