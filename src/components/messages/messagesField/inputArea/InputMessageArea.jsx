@@ -5,12 +5,12 @@ const InputMessageArea = (props) => {
     let textAreaRef = React.createRef();
 
     let sendMsg = () => {
-        props.store.sendMessage();
-        props.store.setNewMessageText('');
+        props.store.dispatch({type:'SEND-MESSAGE'})/*sendMessage()*/;
+        props.store.dispatch({type:'SET-NEW-MESSAGE-TEXT', newText:''})/*setNewMessageText('')*/;
     };
     let onTextChange = () => {
         let text = textAreaRef.current.value;
-        props.store.setNewMessageText(text);
+        props.store.dispatch({type:'SET-NEW-MESSAGE-TEXT', newText:text})/*setNewMessageText(text)*/;
 
     };
     return (<div className={`${s.inputBlock}`}>
