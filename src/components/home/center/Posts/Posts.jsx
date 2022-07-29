@@ -1,5 +1,4 @@
 import React from "react";
-import { getPosts } from "../../../../redux/home-reducer";
 import PostItem from "./item/PostItem";
 import s from './Posts.module.css';
 

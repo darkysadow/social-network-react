@@ -1,5 +1,5 @@
 import React from "react";
-import { addPostActionCreator, getNewPostText, setNewPostTextActionCreator } from "../../../../../redux/home-reducer";
+import { addPostActionCreator, setNewPostTextActionCreator } from "../../../../../redux/home-reducer";
 import s from './InputForm.module.css';
 
 const InputForm = (props) => {
