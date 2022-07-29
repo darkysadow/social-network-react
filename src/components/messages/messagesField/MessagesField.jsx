@@ -7,9 +7,9 @@ import InputMessageArea from "./inputArea/InputMessageArea";
 import YourMessage from "./inputArea/yourMessage/YourMessage";
 
 const MessagesField = (props) => {
-let state = props.store.getState();
-let messagesData = state.messagesPage.messagesData;    
-let userMessagesData = state.messagesPage.userMessagesData;
+let messagesPage = props.state.messagesPage;
+let messagesData = messagesPage.messagesData;    
+let userMessagesData = messagesPage.userMessagesData;
 let messages = messagesData.map(msg => (<Message text={msg.text} />));
 let myMessages = userMessagesData.map(msg => (<YourMessage text={msg.text} />));
 
@@ -32,7 +32,7 @@ let myMessages = userMessagesData.map(msg => (<YourMessage text={msg.text} />));
                 {myMessages}
             </div>
             <div className={s.inputForm}>
-                <InputMessageArea store={props.store}/>
+                <InputMessageArea store={props.store} messagesPage={messagesPage}/>
             </div>
         </div>
     </div>);

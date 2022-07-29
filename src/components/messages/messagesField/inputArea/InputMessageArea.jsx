@@ -3,7 +3,6 @@ import { sendMessageActionCreator, setNewMessageTextActionCreator } from "../../
 import s from './InputMessageArea.module.css';
 
 const InputMessageArea = (props) => {
-    let state = props.store.getState();
 
     let textAreaRef = React.createRef();
 
@@ -18,7 +17,7 @@ const InputMessageArea = (props) => {
     };
     return (<div className={`${s.inputBlock}`}>
         <div className={s.inputArea}>
-            <textarea placeholder='  Type your message here...' onChange={onTextChange} ref={textAreaRef} value={state.messagesPage.newMessageText}/>
+            <textarea placeholder='  Type your message here...' onChange={onTextChange} ref={textAreaRef} value={props.messagesPage.newMessageText}/>
             <button onClick={sendMsg}>send</button>
         </div>
     </div>);
