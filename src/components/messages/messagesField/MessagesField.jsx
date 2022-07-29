@@ -7,8 +7,9 @@ import InputMessageArea from "./inputArea/InputMessageArea";
 import YourMessage from "./inputArea/yourMessage/YourMessage";
 
 const MessagesField = (props) => {
-let messagesData = props.store.getMessagesData();    
-let userMessagesData = props.store.getUserMessagesData();
+let state = props.store.getState();
+let messagesData = state.messagesPage.messagesData;    
+let userMessagesData = state.messagesPage.userMessagesData;
 let messages = messagesData.map(msg => (<Message text={msg.text} />));
 let myMessages = userMessagesData.map(msg => (<YourMessage text={msg.text} />));
 
