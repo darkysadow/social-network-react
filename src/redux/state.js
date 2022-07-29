@@ -7,11 +7,11 @@ import pages1 from "./../img/pages5.jpg";
 import pages2 from "./../img/pages6.jpg";
 import pages3 from "./../img/pages7.jpg";
 import media1 from "./../img/korneplodMem.jpg";
+import homeReducer from './home-reducer';
+import messagesReducer from './messages-reducer';
 
-const ADD_POST = 'ADD-POST';
-const SET_NEW_POST_TEXT = 'SET-NEW-POST-TEXT';
-const SET_NEW_MESSAGE_TEXT = 'SET-NEW-MESSAGE-TEXT';
-const SEND_MESSAGE = 'SEND-MESSAGE';
+
+
 
 let store = {
     _subscriber() {
@@ -70,41 +70,10 @@ let store = {
         return this._state.messagesPage.userMessagesData;
     },
     dispatch(action) {
-        if (action.type === 'SET-NEW-POST-TEXT') {
-            this._state.homePage.newPostText = action.newText;
-            this._subscriber();
-        } else if (action.type === 'ADD-POST') {
-            if (this._state.homePage.newPostText !== "" && this._state.homePage.newPostText !== " ") {
-                let newPost = {
-                    avatar: pages1,
-                    who: "mc petya",
-                    when: action.when,
-                    text: this._state.homePage.newPostText,
-                    likes: '0',
-                    comments: '0',
-                    shares: "0"
-                };
-                this._state.homePage.posts.push(newPost);
-                this._subscriber();
-            }
-        } else if (action.type === 'SET-NEW-MESSAGE-TEXT') {
-            this._state.messagesPage.newMessageText = action.newText;
-            this._subscriber();
-        } else if (action.type === 'SEND-MESSAGE') {
-            if (this._state.messagesPage.newMessageText !== "") {
-                let newMessage = {
-                    text: this._state.messagesPage.newMessageText
-                };
-                this._state.messagesPage.userMessagesData.push(newMessage);
-                this._subscriber();
-            }
-        }
+        homeReducer(this._state.homePage, action);
+        messagesReducer(this._state.messagesPage, action);
+        this._subscriber();
     }
 }
-
-export const addPostActionCreator = (when) => ({type:ADD_POST, when:when});
-export const sendMessageActionCreator = () => ({type:SEND_MESSAGE});
-export const setNewMessageTextActionCreator = (text) => ({type:SET_NEW_MESSAGE_TEXT, newText:text});
-export const setNewPostTextActionCreator = (text) => ({type:SET_NEW_POST_TEXT, newText:text});
 
 export default store;

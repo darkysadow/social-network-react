@@ -1,5 +1,5 @@
 import React from "react";
-import { sendMessageActionCreator, setNewMessageTextActionCreator } from "../../../../redux/state";
+import { sendMessageActionCreator, setNewMessageTextActionCreator } from "../../../../redux/messages-reducer";
 import s from './InputMessageArea.module.css';
 
 const InputMessageArea = (props) => {
