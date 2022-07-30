@@ -9,8 +9,8 @@ const Body = (props) => {
         <main className={s.main}>
             <div className="container">
                 <Routes>
-                    <Route path="/home" element={<Home store={props.store}/>} />
-                    <Route path="/*" element={<Messages store={props.store}/>} />
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/*" element={<Messages />} />
                 </Routes>
             </div>
         </main>

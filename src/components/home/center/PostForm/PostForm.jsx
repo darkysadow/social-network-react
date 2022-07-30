@@ -9,7 +9,7 @@ const PostForm = (props) => {
         <div className={s.avatar}>
             <img src={ava} alt="" />
         </div>
-        <InputFormContainer field={props.field} buttonText={props.buttonText} store={props.store}/>
+        <InputFormContainer field={props.field} buttonText={props.buttonText} />
     </div>);
 }
 
