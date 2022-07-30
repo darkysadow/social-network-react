@@ -9,9 +9,7 @@ const InputMessageAreaContainer = (props) => {
     };
     let onTextChange = (text) => {
         props.store.dispatch(setNewMessageTextActionCreator(text))/*setNewMessageText(text)*/;
-
     };
     return (<InputMessageArea sendMessage={sendMsg} onTextChange={onTextChange} newMessageText={props.messagesPage.newMessageText}/>);
 }
-{/*sendMessage={props.sendMessage} updateNewMessage={props.updateNewMessage}*/}
 export default InputMessageAreaContainer;

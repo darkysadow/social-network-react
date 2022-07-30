@@ -3,16 +3,13 @@ import s from './../Messages.module.css';
 import BlockStyles from './../../block-styles/BlockStyles.module.css';
 import ava1 from './../../../img/pages8.jpg';
 import Message from "./message/Message";
-import InputMessageArea from "./inputArea/InputMessageArea";
 import YourMessage from "./inputArea/yourMessage/YourMessage";
 import InputMessageAreaContainer from "./inputArea/InputMessageAreaContainer";
 
 const MessagesField = (props) => {
-let messagesPage = props.state.messagesPage;
-let messagesData = messagesPage.messagesData;    
-let userMessagesData = messagesPage.userMessagesData;
-let messages = messagesData.map(msg => (<Message text={msg.text} />));
-let myMessages = userMessagesData.map(msg => (<YourMessage text={msg.text} />));
+let messagesPage = props.store.getState().messagesPage;    
+let messages = messagesPage.messagesData.map(msg => (<Message text={msg.text} />));
+let myMessages = messagesPage.userMessagesData.map(msg => (<YourMessage text={msg.text} />));
 
     return (<div className={s.messagesRight}>
         <div className={`${s.messagesField} ${BlockStyles.blockShadow} ${BlockStyles.blockMargin}`}>

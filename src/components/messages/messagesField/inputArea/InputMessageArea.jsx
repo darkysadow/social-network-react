@@ -15,5 +15,4 @@ const InputMessageArea = (props) => {
         </div>
     </div>);
 }
-{/*sendMessage={props.sendMessage} updateNewMessage={props.updateNewMessage}*/}
 export default InputMessageArea;

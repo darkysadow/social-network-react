@@ -4,11 +4,7 @@ import Messages from './messages/Messages';
 import s from './Body.module.css';
 import { Route, Routes } from "react-router-dom";
 
-
-
-
 const Body = (props) => {
-
     return (
         <main className={s.main}>
             <div className="container">
