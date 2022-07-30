@@ -5,6 +5,7 @@ import ava1 from './../../../img/pages8.jpg';
 import Message from "./message/Message";
 import InputMessageArea from "./inputArea/InputMessageArea";
 import YourMessage from "./inputArea/yourMessage/YourMessage";
+import InputMessageAreaContainer from "./inputArea/InputMessageAreaContainer";
 
 const MessagesField = (props) => {
 let messagesPage = props.state.messagesPage;
@@ -32,7 +33,7 @@ let myMessages = userMessagesData.map(msg => (<YourMessage text={msg.text} />));
                 {myMessages}
             </div>
             <div className={s.inputForm}>
-                <InputMessageArea store={props.store} messagesPage={messagesPage}/>
+                <InputMessageAreaContainer store={props.store} messagesPage={messagesPage}/>
             </div>
         </div>
     </div>);

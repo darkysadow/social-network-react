@@ -1,23 +1,16 @@
 import React from "react";
-import { sendMessageActionCreator, setNewMessageTextActionCreator } from "../../../../redux/messages-reducer";
 import s from './InputMessageArea.module.css';
 
 const InputMessageArea = (props) => {
-
-    let textAreaRef = React.createRef();
-
     let sendMsg = () => {
-        props.store.dispatch(sendMessageActionCreator())/*sendMessage()*/;
-        props.store.dispatch(setNewMessageTextActionCreator(''))/*setNewMessageText('')*/;
+        props.sendMessage();
     };
-    let onTextChange = () => {
-        let text = textAreaRef.current.value;
-        props.store.dispatch(setNewMessageTextActionCreator(text))/*setNewMessageText(text)*/;
-
+    let onTextChange = (e) => {
+        props.onTextChange(e.target.value);
     };
     return (<div className={`${s.inputBlock}`}>
         <div className={s.inputArea}>
-            <textarea placeholder='  Type your message here...' onChange={onTextChange} ref={textAreaRef} value={props.messagesPage.newMessageText}/>
+            <textarea placeholder='  Type your message here...' onChange={onTextChange} value={props.newMessageText}/>
             <button onClick={sendMsg}>send</button>
         </div>
     </div>);
