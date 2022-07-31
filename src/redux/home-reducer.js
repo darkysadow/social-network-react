@@ -18,23 +18,28 @@ let initialState = {
 
 let homeReducer = (state = initialState, action) => {
     switch(action.type){
-        case ADD_POST:
-            if (state.newPostText !== "" && state.newPostText !== " ") {
+        case ADD_POST: {
+            let stateCopy = {...state};
+            stateCopy.posts = [...state.posts];
+            if (stateCopy.newPostText !== "" && stateCopy.newPostText !== " ") {
                 let newPost = {
                     avatar: pages1,
                     who: "mc petya",
                     when: action.when,
-                    text: state.newPostText,
+                    text: stateCopy.newPostText,
                     likes: '0',
                     comments: '0',
                     shares: "0"
                 };
-                state.posts.push(newPost);
+                stateCopy.posts.push(newPost);
+                stateCopy.newPostText = '';
             }
-            return state;
-        case SET_NEW_POST_TEXT:
-            state.newPostText = action.newText;
-            return state;
+            return stateCopy; }
+        case SET_NEW_POST_TEXT: {
+            let stateCopy = {...state}
+            stateCopy.newPostText = action.newText;
+            return stateCopy;
+        }
         
         default:
             return state;

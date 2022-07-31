@@ -27,17 +27,22 @@ let initialState = {
 
 let messagesReducer = (state = initialState, action) => {
     switch(action.type) {
-        case SET_NEW_MESSAGE_TEXT:
-            state.newMessageText = action.newText;
-            return state;
-        case SEND_MESSAGE:
-            if (state.newMessageText !== "") {
+        case SET_NEW_MESSAGE_TEXT: {
+            let stateCopy = {...state};
+            stateCopy.newMessageText = action.newText;
+            return stateCopy;}
+        case SEND_MESSAGE: {
+            let stateCopy = {...state};
+            stateCopy.userMessagesData = [...state.userMessagesData];
+
+            if (stateCopy.newMessageText !== "") {
                 let newMessage = {
-                    text: state.newMessageText
+                    text: stateCopy.newMessageText
                 };
-                state.userMessagesData.push(newMessage);
+                stateCopy.userMessagesData.push(newMessage);
+                stateCopy.newMessageText = "";
             }
-            return state;
+            return stateCopy; }
         default:
             return state;
     }

@@ -3,7 +3,7 @@ import s from './InputMessageArea.module.css';
 
 const InputMessageArea = (props) => {
     let sendMsg = () => {
-        props.sendMessage();
+        props.sendMsg();
     };
     let onTextChange = (e) => {
         props.onTextChange(e.target.value);

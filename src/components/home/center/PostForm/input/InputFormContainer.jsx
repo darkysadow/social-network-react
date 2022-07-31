@@ -1,9 +1,9 @@
 import React from "react";
 import { addPostActionCreator, setNewPostTextActionCreator } from "../../../../../redux/home-reducer";
-import StoreContext from "../../../../../redux/store-context";
 import InputForm from "./InputForm";
+import { connect } from "react-redux";
 
-const InputFormContainer = (props) => {
+/*const InputFormContainer = (props) => {
     return (
         <StoreContext.Consumer>
             {
@@ -21,6 +21,25 @@ const InputFormContainer = (props) => {
 
         </StoreContext.Consumer>
     )
+}*/
+
+const mapStoreToProps = (state) => {
+    return {
+        newPostText: state.homePage.newPostText
+    }
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addPost: () => {
+            dispatch(addPostActionCreator('2 minutes ago'));
+        },
+        onTextChange: (text) => {
+            dispatch(setNewPostTextActionCreator(text));
+        }
+    }
+}
+
+const InputFormContainer = connect(mapStoreToProps, mapDispatchToProps)(InputForm);
 
 export default InputFormContainer;
