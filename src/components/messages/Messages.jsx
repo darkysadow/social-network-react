@@ -1,6 +1,5 @@
 import React from "react";
 import s from './Messages.module.css';
-import MessagesField from "./messagesField/MessagesField";
 import DialogsBarContainer from "./dialogsBar/DialogsBarContainer";
 import MessagesFieldContainer from "./messagesField/MessagesFieldContainer";
 

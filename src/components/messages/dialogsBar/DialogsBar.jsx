@@ -5,7 +5,7 @@ import BlockTitle from './../../block-styles/BlockTitle';
 import Dialog from "./dialog/Dialog";
 
 const DialogsBar = (props) => {
-    let dialogs = props.dialogsData.map(d => (<Dialog avatar={d.ava} name={d.name} surname={d.surname} lastMessage={d.lastMessage} id={d.id} />));
+    let dialogs = props.dialogsData.map(d => (<Dialog avatar={d.ava} key={d.id} name={d.name} surname={d.surname} lastMessage={d.lastMessage} id={d.id} />));
     return (<div className={s.messagesLeft}>
         <div className={`${s.messagesBar} ${BlockStyles.blockShadow} ${BlockStyles.blockMargin}`}>
             <BlockTitle Classname={s.messagesBar__title} Text="Dialogs" />

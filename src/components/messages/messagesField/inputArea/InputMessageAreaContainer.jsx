@@ -1,4 +1,3 @@
-import React from "react";
 import { sendMessageActionCreator, setNewMessageTextActionCreator } from "../../../../redux/messages-reducer";
 import InputMessageArea from "./InputMessageArea";
 import { connect } from 'react-redux';

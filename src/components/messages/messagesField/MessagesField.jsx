@@ -7,8 +7,8 @@ import YourMessage from "./inputArea/yourMessage/YourMessage";
 import InputMessageAreaContainer from "./inputArea/InputMessageAreaContainer";
 
 const MessagesField = (props) => {
-    let messages = props.messagesData.map(msg => (<Message text={msg.text} />));
-    let myMessages = props.userMessagesData.map(msg => (<YourMessage text={msg.text} />));
+    let messages = props.messagesData.map(msg => (<Message text={msg.text} key={msg.id} />));
+    let myMessages = props.userMessagesData.map(msg => (<YourMessage text={msg.text} key={msg.id}/>));
 
     return (<div className={s.messagesRight}>
         <div className={`${s.messagesField} ${BlockStyles.blockShadow} ${BlockStyles.blockMargin}`}>
