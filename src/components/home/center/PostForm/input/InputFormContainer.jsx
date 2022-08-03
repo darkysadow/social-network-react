@@ -1,4 +1,3 @@
-import React from "react";
 import { addPostActionCreator, setNewPostTextActionCreator } from "../../../../../redux/home-reducer";
 import InputForm from "./InputForm";
 import { connect } from "react-redux";
