@@ -1,0 +1,85 @@
+.usersContainer{
+    display: flex;
+    flex-direction: row;
+    flex: 0 0 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.usersAgregator {
+    display: flex;
+    flex: 0 0 25%;
+}
+
+.usersList{
+    display: flex;
+    flex: 0 0 70%;
+    flex-direction: column;
+}
+.userBlock{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.userBlock:last-child{
+    border-bottom: 0px;
+}
+.info {
+    display: flex;
+    flex-direction: row;
+}
+.left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.center{
+    padding: 10px 15px;
+}
+.right{
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    color: cornflowerblue;
+    line-height: 40px;
+}
+.nameBlock{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.followed {
+    background-color: darkgray;
+}
+
+.followButton button{
+    padding: 5px;
+    border-radius: 0;
+    width: 110px;
+    margin: 10px 0 0 0;
+}
+.bio{
+    margin: 15px 0 0 0;
+    color: rgba(0, 0, 0, 0.6);
+    max-width: 480px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.avatar {
+    width: 80px;
+    height: 80px;
+}
+.avatar img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+}
+.city{}
+.country{}

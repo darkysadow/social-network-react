@@ -3,6 +3,7 @@ import Home from './home/Home';
 import Messages from './messages/Messages';
 import s from './Body.module.css';
 import { Route, Routes } from "react-router-dom";
+import UsersContainer from './users/UsersContainer';
 
 const Body = (props) => {
     return (
@@ -11,6 +12,7 @@ const Body = (props) => {
                 <Routes>
                     <Route path="/home" element={<Home />} />
                     <Route path="/*" element={<Messages />} />
+                    <Route path='/users' element={<UsersContainer/>} />
                 </Routes>
             </div>
         </main>

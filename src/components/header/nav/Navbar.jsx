@@ -12,7 +12,7 @@ const Navbar = () => {
                 <NavLink to='/messages' activeClassName={s.selected}>Messages</NavLink>
             </li>
             <li className={s.button}>
-                <NavLink to="/notifications" activeClassName={s.selected}>Notifications</NavLink>
+                <NavLink to="/users" activeClassName={s.selected}>Users</NavLink>
             </li>
         </menu>
     );
