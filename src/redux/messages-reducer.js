@@ -34,9 +34,10 @@ let messagesReducer = (state = initialState, action) => {
             }
         case SEND_MESSAGE: 
             if (state.newMessageText !== '') {
+                let idCounter = state.userMessagesData.length;
                 let newMessage = {
                     text: state.newMessageText,
-                    id: 1
+                    id: ++idCounter
                 };
                 return {
                     ...state,
