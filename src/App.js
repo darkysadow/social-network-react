@@ -9,7 +9,7 @@ function App(props) {
     <div className="wrapper">
       <BrowserRouter>
         <Header />
-        <Body store={props.store} />
+        <Body />
         <footer></footer>
       </BrowserRouter>
     </div>
