@@ -4,6 +4,7 @@ import BlockStyles from './../block-styles/BlockStyles.module.css'
 import BlockTitle from "../block-styles/BlockTitle";
 
 class Users extends React.Component {
+    //тіпа це то шо повертає сервер)))
     users = [{   id: 1,
         followed: true,
         avatar: 'https://i.ytimg.com/vi/45dH29TDWtM/hqdefault.jpg',
@@ -71,13 +72,8 @@ class Users extends React.Component {
         },
         old: 48}]
 
-    constructor(props) {
-        super(props);
-        if(this.props.users.length === 0) {
-            
+    componentDidMount() {
             this.props.setUsers(this.users);
-            debugger;
-        }
         
     }
     render() {
