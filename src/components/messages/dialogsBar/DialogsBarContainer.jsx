@@ -1,27 +1,14 @@
+import React from "react";
 import { connect } from "react-redux";
 import DialogsBar from "./DialogsBar"
 
-/*const DialogsBar = (props) => {
-    return (
-        <StoreContext.Consumer>
-            {
-                (store) => {
-                    let dialogsData = store.getState().messagesPage.dialogsData;
-                    let dialogs = dialogsData.map(d => (<Dialog avatar={d.ava} name={d.name} surname={d.surname} lastMessage={d.lastMessage} id={d.id} />));
-                    return (<div className={s.messagesLeft}>
-                        <div className={`${s.messagesBar} ${BlockStyles.blockShadow} ${BlockStyles.blockMargin}`}>
-                            <BlockTitle Classname={s.messagesBar__title} Text="Dialogs" />
-                            <div className={s.messagesList}>
-                                {dialogs}
-                            </div>
-                        </div>
-                    </div>);
-                }
-            }
-        </StoreContext.Consumer>
-    )
-
-}*/
+class DialogsBarContainer extends React.Component {
+    render() {
+        return (
+            <DialogsBar dialogsData={this.props.dialogsData}/>
+        )
+    }
+}
 
 const mapStoreToProps = (state) => {
     return {
@@ -29,6 +16,4 @@ const mapStoreToProps = (state) => {
     }
 }
 
-const DialogsBarContainer = connect(mapStoreToProps)(DialogsBar);
-
-export default DialogsBarContainer;
+export default connect(mapStoreToProps)(DialogsBarContainer);
