@@ -1,17 +1,15 @@
 import { sendMessageActionCreator, setNewMessageTextActionCreator } from "../../../../redux/messages-reducer";
 import InputMessageArea from "./InputMessageArea";
 import { connect } from 'react-redux';
+import React from "react";
 
-/*const InputMessageAreaContainer = (props) => {
-    let sendMsg = () => {
-        props.store.dispatch(sendMessageActionCreator())/*sendMessage();
-        props.store.dispatch(setNewMessageTextActionCreator(''))/*setNewMessageText('');
-    };
-    let onTextChange = (text) => {
-        props.store.dispatch(setNewMessageTextActionCreator(text))/*setNewMessageText(text);
-    };
-    return (<InputMessageArea sendMessage={sendMsg} onTextChange={onTextChange} newMessageText={props.messagesPage.newMessageText}/>);
-}*/
+class InputMessageAreaContainer extends React.Component {
+    render() {
+        return (
+            <InputMessageArea newMessageText={this.props.newMessageText} sendMsg={this.props.sendMsg} onTextChange={this.props.onTextChange}/>
+        )
+    }
+}
 
 const mapStoreToProps = (state) => {
     return {
@@ -30,6 +28,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const InputMessageAreaContainer = connect(mapStoreToProps, mapDispatchToProps)(InputMessageArea);
-
-export default InputMessageAreaContainer;
+export default connect(mapStoreToProps, mapDispatchToProps)(InputMessageAreaContainer);

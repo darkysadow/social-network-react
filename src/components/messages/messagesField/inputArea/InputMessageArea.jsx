@@ -2,16 +2,10 @@ import React from "react";
 import s from './InputMessageArea.module.css';
 
 const InputMessageArea = (props) => {
-    let sendMsg = () => {
-        props.sendMsg();
-    };
-    let onTextChange = (e) => {
-        props.onTextChange(e.target.value);
-    };
     return (<div className={`${s.inputBlock}`}>
         <div className={s.inputArea}>
-            <textarea placeholder='  Type your message here...' onChange={onTextChange} value={props.newMessageText}/>
-            <button onClick={sendMsg}>send</button>
+            <textarea placeholder='  Type your message here...' onChange={(e) => {props.onTextChange(e.target.value)}} value={props.newMessageText}/>
+            <button onClick={props.sendMsg}>send</button>
         </div>
     </div>);
 }
