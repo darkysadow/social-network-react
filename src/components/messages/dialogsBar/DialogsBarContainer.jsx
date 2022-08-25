@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setDialogsDataAC } from "../../../redux/messages-reducer";
+import { setDialogsData } from "../../../redux/messages-reducer";
 import DialogsBar from "./DialogsBar"
 
 import ava1 from './../../../img/pages8.jpg';
@@ -23,7 +23,7 @@ class DialogsBarContainer extends React.Component {
         
     componentDidMount(){
         if(this.props.dialogsData.length === 0) {
-            this.props.setDialogs(this.dialogs);
+            this.props.setDialogsData(this.dialogs);
         }
     }
     render() {
@@ -39,12 +39,4 @@ const mapStoreToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setDialogs: (data) => {
-            dispatch(setDialogsDataAC(data));
-        }
-    }
-}
-
-export default connect(mapStoreToProps, mapDispatchToProps)(DialogsBarContainer);
+export default connect(mapStoreToProps, {setDialogsData})(DialogsBarContainer);

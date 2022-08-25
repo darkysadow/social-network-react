@@ -1,5 +1,3 @@
-
-
 const SET_NEW_MESSAGE_TEXT = 'SET-NEW-MESSAGE-TEXT';
 const SEND_MESSAGE = 'SEND-MESSAGE';
 const SET_DIALOGS_DATA = 'SET-DIALOGS-DATA';
@@ -13,13 +11,7 @@ let initialState = {
     ],
     userMessagesData: [],
     newMessageText: '',
-    dialogsData: [
-        /*{ name: "billy", surname: "herrington", ava: ava1, lastMessage: "Let`s celebrate...", id: 'user1' },
-        { name: "petro", surname: "mostavchuk", ava: ava2, lastMessage: "Aleksiyk Yana!", id: 'user2' },
-        { name: "chistiy", surname: "syodnya", ava: ava3, lastMessage: "I`m clear now near you", id: 'user3' },
-        { name: "victor", surname: "korneplod", ava: ava4, lastMessage: "Я тебя настигну", id: 'user4' },
-        { name: "kama", surname: "pulya", ava: ava5, lastMessage: "Leave the shit", id: 'user5' }*/
-    ]
+    dialogsData: []
 }
 
 let messagesReducer = (state = initialState, action) => {
@@ -53,8 +45,8 @@ let messagesReducer = (state = initialState, action) => {
     }
 }
 
-export const sendMessageActionCreator = () => ({ type: SEND_MESSAGE });
-export const setNewMessageTextActionCreator = (text) => ({ type: SET_NEW_MESSAGE_TEXT, newText: text });
-export const setDialogsDataAC = (data) => ({type: SET_DIALOGS_DATA, data})
+export const sendMessage = () => ({ type: SEND_MESSAGE });
+export const setNewMessageText = (text) => ({ type: SET_NEW_MESSAGE_TEXT, newText: text });
+export const setDialogsData = (data) => ({type: SET_DIALOGS_DATA, data})
 
 export default messagesReducer;
