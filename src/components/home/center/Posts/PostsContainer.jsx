@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { setPostsAC } from '../../../../redux/home-reducer';
+import { setPosts } from '../../../../redux/home-reducer';
 import Posts from './Posts';
 
 import pages1 from "./../../../../img/pages5.jpg"
@@ -32,12 +32,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setPosts: (data) => {
-            dispatch(setPostsAC(data));
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(PostsContainer);
+export default connect(mapStateToProps, {setPosts})(PostsContainer);

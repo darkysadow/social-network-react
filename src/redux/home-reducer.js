@@ -45,8 +45,8 @@ let homeReducer = (state = initialState, action) => {
     }
 }
 
-export const addPostActionCreator = (when) => ({type:ADD_POST, when:when});
-export const setNewPostTextActionCreator = (text) => ({type:SET_NEW_POST_TEXT, newText:text});
-export const setPostsAC = (data) => ({type: SET_POSTS, data})
+export const addPost = (when) => ({type:ADD_POST, when:when});
+export const setNewPostText = (text) => ({type:SET_NEW_POST_TEXT, newText:text});
+export const setPosts = (data) => ({type: SET_POSTS, data})
 
 export default homeReducer;
