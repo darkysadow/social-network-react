@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { follow, setUsers, unfollow } from "../../redux/users-reducer";
 import Users from "./Users";
+import { serverUsersData } from "../../server-immitator/users-page";
 
 class UsersContainer extends React.Component {
     //тіпа це то шо повертає сервер)))
@@ -70,14 +71,89 @@ class UsersContainer extends React.Component {
             city: 'Нью-Йорк',
             country: 'США'
         },
-        old: 48}]
-
+        old: 48},
+        {
+            id: 7,
+            followed: false,
+            avatar: 'https://glavcom.ua/img/article/8281/43_main-v1646802867.jpg',
+            name: 'Тарас',
+            surname: 'Шевченко',
+            bio: 'Хоч про ягнят?',
+            location: {
+                city: 'Моринці',
+                country: 'Україна'
+            },
+            old: 47
+        },
+        {
+            id: 8,
+            followed: false,
+            avatar: 'https://www.ukrlib.com.ua/my/images/full/franko-ivan-iakovych_1.jpg',
+            name: 'Іван',
+            surname: 'Франко',
+            bio: 'Найстрашніша клятьба — полюбити раба!',
+            location: {
+                city: 'Львів',
+                country: 'Україна'
+            },
+            old: 59
+        },
+        {
+            id: 9,
+            followed: false,
+            avatar: 'https://www.vyshneve-rada.gov.ua/images/stories/2016/2/lesya-ukrayinka.jpg',
+            name: 'Леся',
+            surname: 'Українка',
+            bio: 'Щоб не плакать, я сміялась',
+            location: {
+                city: 'Новоград-Волинський',
+                country: 'Україна'
+            },
+            old: 32
+        },
+        {
+            id: 10,
+            followed: false,
+            avatar: 'https://eschool.dn.ua/pluginfile.php/362354/mod_page/content/2/%D0%9E.%D0%9E%D0%BB%D0%B5%D1%81%D1%8C.jpg',
+            name: 'Олександр',
+            surname: 'Олесь',
+            bio: 'Земля розступилась! І з праведних трун Виходять Хмельницький, Мазепа, Богун! І з Волі знімають кайдани міцні, І слізьми співають щасливі пісні.',
+            location: {
+                city: 'Білопілля',
+                country: 'Україна'
+            },
+            old: 65
+        },
+        {
+            id: 11,
+            followed: false,
+            avatar: 'https://glavcom.ua/img/article/7031/87_main-v1599195504.jpg',
+            name: 'Василь',
+            surname: 'Стус',
+            bio: 'Якщо болить серце — тобі, друже, поталанило',
+            location: {
+                city: 'Рахнівка',
+                country: 'Україна'
+            },
+            old: 47
+        }
+    ]
     componentDidMount() {
-            this.props.setUsers(this.users);
-        
+            let showedUsers = [];
+            for(let i = 0; i<4; i++){
+                showedUsers.push(serverUsersData[i]);
+                console.log(showedUsers);
+            }
+            console.log(this.props.users.length);
+            if(this.props.users.length === 0) {
+                this.props.setUsers(showedUsers);
+            }
+            
+            
     }
+    
     render() {
-        return (<Users users={this.props.users} follow={this.props.follow} unfollow={this.props.unfollow}/>)
+        return (<Users users={this.props.users} follow={this.props.follow} unfollow={this.props.unfollow} setUsers={this.props.setUsers}/>)
     }
 }
 

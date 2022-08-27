@@ -70,9 +70,11 @@ class Users extends React.Component {
             city: 'Нью-Йорк',
             country: 'США'
         },
-        old: 48}]
+        old: 48}
+    ]
 
     componentDidMount() {
+        debugger;
             this.props.setUsers(this.users);
         
     }
