@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { follow, setUsers, unfollow } from "../../redux/users-reducer";
+import { follow, setUsers, unfollow, toggleIsFetching } from "../../redux/users-reducer";
 import Users from "./Users";
 import { serverUsersData } from "../../server-immitator/users-page";
 
@@ -9,22 +9,21 @@ class UsersContainer extends React.Component {
             let showedUsers = [];
             for(let i = 0; i<4; i++){
                 showedUsers.push(serverUsersData[i]);
-                console.log(showedUsers);
             }
-            console.log(this.props.users.length);
             if(this.props.users.length === 0) {
                 this.props.setUsers(showedUsers);
             }
     }
     render() {
-        return (<Users users={this.props.users} follow={this.props.follow} unfollow={this.props.unfollow} setUsers={this.props.setUsers}/>)
+        return (<Users users={this.props.users} isFetching={this.props.isFetching} follow={this.props.follow} unfollow={this.props.unfollow} setUsers={this.props.setUsers} toggleIsFetching={this.props.toggleIsFetching}/>)
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users
+        users: state.usersPage.users,
+        isFetching: state.usersPage.isFetching
     }
 }
 
-export default connect(mapStateToProps, {follow, unfollow, setUsers})(UsersContainer);
+export default connect(mapStateToProps, {follow, unfollow, setUsers, toggleIsFetching})(UsersContainer);

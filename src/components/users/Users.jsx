@@ -3,11 +3,15 @@ import s from "./Users.module.css";
 import BlockStyles from './../block-styles/BlockStyles.module.css'
 import BlockTitle from "../block-styles/BlockTitle";
 import { serverUsersData } from "../../server-immitator/users-page";
+import preloader from './../../img/preloader.gif';
 
 const Users = (props) => {
-    let appendUsers = () => {
+    let slow3g = React.createRef();
+    let appendUsers = (e) => {
+        e.target.disabled = true; //відключає кнопку
+        props.toggleIsFetching(true); //міняє стан на очікування данних
         let pageSize = serverUsersData.length - props.users.length;
-        if(pageSize%3 !== 0) {
+        if(pageSize%3 !== 0) {  //перевірка по скільки користувачів видавати
             if(pageSize%2 !== 0) {
                 pageSize = 1;
             } else {
@@ -16,19 +20,31 @@ const Users = (props) => {
         } else {
             pageSize = 3;
         }
-        let countUsers = props.users.length;
+        let countUsers = props.users.length; //к-ть показаних користувачів
         let showedUsers = [];
-        console.log(props.users.length);
         for(let i = countUsers; i<countUsers+pageSize; i++){
             showedUsers.push(serverUsersData[i]);
             
         }
-        props.setUsers(showedUsers);
+        if(slow3g.current.checked){ //імітація повільного інтернет-з'єднання
+            setTimeout(() => {props.setUsers(showedUsers); e.target.disabled = false; props.toggleIsFetching(false);}, 2000); //типу сервер повертає дані за 2 секунди
+        } else { //швидке з'єднання
+            e.target.disabled = false;
+            props.setUsers(showedUsers);
+            props.toggleIsFetching(false);
+            
+        }
+        
     }
+
     return(
         <div className={s.usersContainer}>
             <div className={s.usersAgregator + " " + BlockStyles.blockShadow + " " + BlockStyles.blockMargin}>
                 <BlockTitle Text="Фільтри" />
+                <div className={s.slow3g}>
+                    <p>Slow 3G</p>
+                    <input type="checkbox" ref={slow3g}/>
+                </div>
             </div>
             <div className={s.usersList + " " + BlockStyles.blockShadow + " " + BlockStyles.blockMargin}>
                 {
@@ -62,8 +78,8 @@ const Users = (props) => {
                         </div>
                     </div>)
             }
-            
-                {(props.users.length < serverUsersData.length)?<div className={s.seeMoreButton}><button onClick={appendUsers}>завантажити ще</button></div>:<p></p>}
+                {/*Перевірка чи є що завантажувати з так званого серверу*/}
+                {(props.users.length < serverUsersData.length)?<div className={s.seeMoreButton}><button onClick={appendUsers}>{props.isFetching?<img src={preloader} height="17px" width="17px"/>:"показати ще"}</button></div>:<p></p>}
             
         </div>
     </div>

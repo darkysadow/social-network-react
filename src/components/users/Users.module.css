@@ -9,6 +9,7 @@
 .usersAgregator {
     display: flex;
     flex: 0 0 25%;
+    flex-direction: column;
 }
 
 .usersList{
@@ -94,4 +95,10 @@
     border-radius: 0px;
     padding: 5px 10px;
     width: 100%;
+}
+
+.slow3g {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
