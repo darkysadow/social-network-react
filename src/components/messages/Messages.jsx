@@ -4,9 +4,12 @@ import DialogsBarContainer from "./dialogsBar/DialogsBarContainer";
 import MessagesFieldContainer from "./messagesField/MessagesFieldContainer";
 
 const Messages = (props) => {
-    return (<div className={s.messages}>
-        <DialogsBarContainer />
-        <MessagesFieldContainer />
-    </div>);
+    return (
+        <div className="container">
+            <div className={s.messages}>
+                <DialogsBarContainer />
+                <MessagesFieldContainer />
+            </div>
+        </div>);
 }
 export default Messages;

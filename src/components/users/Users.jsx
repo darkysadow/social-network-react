@@ -4,6 +4,7 @@ import BlockStyles from './../block-styles/BlockStyles.module.css'
 import BlockTitle from "../block-styles/BlockTitle";
 import { serverUsersData } from "../../server-immitator/users-page";
 import preloader from './../../img/preloader.gif';
+import { NavLink } from "react-router-dom";
 
 const Users = (props) => {
     let slow3g = React.createRef();
@@ -60,7 +61,7 @@ const Users = (props) => {
                             </div>
                             <div className={s.center}>
                                 <div className={s.nameBlock}>
-                                    <div><p><a href="#">{u.firstname + " " + u.surname}</a> , {u.old}</p></div>
+                                    <div><p><NavLink to={"/profile/id"+u.id}>{u.firstname + " " + u.surname}</NavLink> , {u.old}</p></div>
                                     <div></div>
                                 </div>
                                 <div className={s.bio}>

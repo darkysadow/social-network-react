@@ -15,7 +15,10 @@ class UsersContainer extends React.Component {
             }
     }
     render() {
-        return (<Users users={this.props.users} isFetching={this.props.isFetching} follow={this.props.follow} unfollow={this.props.unfollow} setUsers={this.props.setUsers} toggleIsFetching={this.props.toggleIsFetching}/>)
+        return (
+            <div className="container">    
+        <Users users={this.props.users} isFetching={this.props.isFetching} follow={this.props.follow} unfollow={this.props.unfollow} setUsers={this.props.setUsers} toggleIsFetching={this.props.toggleIsFetching}/>
+        </div>)
     }
 }
 
