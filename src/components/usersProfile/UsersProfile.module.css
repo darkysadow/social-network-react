@@ -1,0 +1,208 @@
+.usersPage{
+    width: 100%;
+}
+
+.profileBackgound {
+    width: 100%;
+    height: 320px;
+}
+
+.profileBackgound img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.navPanelBackground{
+    background-color: white;
+    padding: 17px 0;
+}
+
+.navPanel{
+    display: flex;
+    list-style-type: none;
+    padding: 0 0 0 400px;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+}
+
+.followed {
+    background-color: darkgray;
+    margin: 0px;
+}
+
+.followButton {
+    padding: 0;
+}
+
+.followButton button{
+    padding: 5px;
+    border-radius: 0;
+    width: 110px;
+}
+
+.avatarBlock {
+    width: 270px;
+    height: 270px;
+    background-color: white;
+    position: absolute;
+    top: 280px;
+    padding: 8px;
+}
+
+.avatarBlock img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.usersPageContainer {
+    display: flex;
+    flex-direction: row;
+    flex: 0 0 100%;
+    justify-content: space-between;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    min-width: 270px;
+    max-width: 270px;
+    margin: 130px 0 0 0;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    min-width: 270px;
+    max-width: 270px;
+}
+
+.bio {
+    line-height: 20px;
+    padding: 0 0 35px 0;
+}
+
+.aboutBlock {
+
+}
+
+.job, .age, .location {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 500;
+}
+
+.job img, .age img, .location img {
+    width: 30px;
+    height: 30px;
+    margin: 0 15px 0 0;
+}
+
+.location {
+    margin: 15px 0;
+}
+
+.photosBlock{
+    display: flex;
+    flex-direction: column;
+}
+
+.photosContainer img {
+    width: 65px;
+    height: 65px;
+    border-radius: 5px;
+    margin: 2.5px;
+}
+
+.photosContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    padding: 0 10px;
+}
+
+.photosContainerBottom,
+.photosContainerMiddle,
+.photosContainerTop {
+    display: flex;
+    flex-direction: row;
+}
+
+.postFormBlock{
+    display: flex;
+    flex-direction: row;
+    padding: 23px 15px;
+    align-items: center;
+}
+
+.postAvatar{
+    flex: 0 0 10%;
+}
+
+.postAvatar img {
+    border-radius: 50%;
+}
+
+.postForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 85%;
+}
+
+.postForm button {
+    padding: 18.5px;
+}
+
+.item{
+    display: flex;
+    flex-direction: column;
+}
+.top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.avatar{
+    flex: 0 0 10%;
+}
+.avatar img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.whoAndWhen{
+    flex-direction: column;
+    flex: 0 0 75%;
+}
+.who{
+    text-transform: capitalize;
+    margin: 8px 0 0 0;
+    cursor: pointer;
+}
+.when{
+    margin: 10px 0 0 0;
+    color: #666a7d;
+}
+.options{
+    /*burger menu*/
+    flex: 0 0 10%;
+}
+.post{
+    flex-direction: column;
+    margin: 20px 0;
+}
+.text{
+    line-height: 28px;
+}

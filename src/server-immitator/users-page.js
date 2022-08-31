@@ -4,17 +4,32 @@ import golova from './../../src/img/golova.jpg';
 
 let usersData = [
     {
+        id: 0,
+        followed: true,
+        avatar: 'https://pbs.twimg.com/profile_images/1329929718255247364/t2Ayg5sJ_400x400.jpg',
+        firstname: 'НеПетро',
+        surname: 'Щур',
+        bio: 'Скільки себе пам\`ятаю, завжди світили мені вікна в задумі розмаю, і рушникии на стініі і рушники на стініі',
+        location: {
+            city: 'с.Мужилів',
+            country: 'Україна'
+        },
+        old: 35,
+        backgroundPhoto: 'https://i.pinimg.com/originals/f0/31/de/f031de8ca5d2fbacca6c4ae08c3fb725.png'
+    },
+    {
         id: 1,
         followed: true,
         avatar: 'https://i.ytimg.com/vi/45dH29TDWtM/hqdefault.jpg',
         firstname: 'Петро',
         surname: 'Щур',
-        bio: 'Скільки себе пам\`ятаю, завжди світили мені... Скільки себе пам\`ятаю, завжди світили мені... Скільки себе пам\`ятаю, завжди світили мені... Скільки себе пам\`ятаю, завжди світили мені...',
+        bio: 'Скільки себе пам\`ятаю, завжди світили мені вікна в задумі розмаю, і рушникии на стініі і рушники на стініі',
         location: {
             city: 'с.Мужилів',
             country: 'Україна'
         },
-        old: 35
+        old: 35,
+        backgroundPhoto: 'https://i.pinimg.com/originals/f0/31/de/f031de8ca5d2fbacca6c4ae08c3fb725.png'
     },
     {
         id: 2,
@@ -342,22 +357,44 @@ let usersData = [
         old: 20
     }
 ];
-/*
-    {
-        id: ,
-        followed: false,
-        avatar: '',
-        firstname: '',
-        surname: '',
-        bio: '',
-        location: {
-            city: '',
-            country: ''
-        },
-        old: 
-    }
-*/
-let defaultAvatar = 'https://png.pngitem.com/pimgs/s/30-307318_camera-circle-youtube-icon-black-hd-png-download.png'
+
+let defaultBackgroundPhoto = 'https://i.pinimg.com/originals/f0/31/de/f031de8ca5d2fbacca6c4ae08c3fb725.png';
+let defaultAvatar = 'https://png.pngitem.com/pimgs/s/30-307318_camera-circle-youtube-icon-black-hd-png-download.png';
 export let serverUsersData = []
-usersData.map(u => serverUsersData.push({id: u.id, followed: u.followed, avatar: u.avatar===''?defaultAvatar:u.avatar, 
-    firstname: u.firstname, surname: u.surname, bio: u.bio, old: u.old, location: {city: u.location.city, country: u.location.country}}));
+window.serverUsersData = serverUsersData;
+usersData.map(u => serverUsersData.push({id: u.id, followed: u.followed, 
+    avatar: u.avatar===''?defaultAvatar:u.avatar, 
+    firstname: u.firstname, surname: u.surname, bio: u.bio, old: u.old, 
+    backgroundPhoto: !u.backgroundPhoto||u.backgroundPhoto===''?defaultBackgroundPhoto:u.backgroundPhoto
+    ,location: {city: u.location.city, country: u.location.country}}));
+
+export let postsData = {
+    id1: [
+        {
+            postId: 2,
+            postOwner: 2,
+            postText: "Lorem ipsum sit dolor",
+            dateOfPost: '31 серп. 2022 р. 15:40'
+        },
+        {
+            postId: 1,
+            postOwner: 3,
+            postText: 'Мотівація то є сильна',
+            dateOfPost: '30 серп. 2022 р. 22:01'
+        }
+    ],
+    id2: [
+        {
+            postId: 2,
+            postOwner: 2,
+            postText: 'Раз раз...',
+            dateOfPost: '31 серп. 2022 р. 14:24'
+        },
+        {
+            postId: 1,
+            postOwner: 21,
+            postText: 'полірни',
+            dateOfPost: '31 серп. 2022 р. 13:48'
+        }
+    ]
+}
