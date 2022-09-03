@@ -3,11 +3,15 @@ import UsersProfile from "./UsersProfile";
 import { connect } from 'react-redux';
 import { setUserProfile, follow, unfollow, setNewPostText, setPosts, addPost} from "../../redux/profile-reducer";
 import { serverUsersData, postsData } from "../../server-immitator/users-page";
+import { useParams } from "react-router-dom";
 
 class UsersProfileContainer extends React.Component {
     componentDidMount() {
-        this.props.setUserProfile(serverUsersData[0]);
-        this.props.setPosts(postsData.id2);
+        
+        
+        this.props.setUserProfile(serverUsersData.find(user => user.id === this.props.router.params.id));
+        this.props.setPosts(postsData.id1);
+        
     }
     render() {
 
@@ -39,6 +43,22 @@ class UsersProfileContainer extends React.Component {
         backgroundPhoto: 'https://i.pinimg.com/originals/f0/31/de/f031de8ca5d2fbacca6c4ae08c3fb725.png'
 */}
 
+let withRouter = (Component) => {
+    let ComponentWithRouterProp = (props) => {
+        let params = useParams();
+        return (
+            <Component
+                {...props}
+                router={{ params }}
+            />
+        );
+    }
+
+    return ComponentWithRouterProp;
+}
+
+
+
 let mapStateToProps = (state) => {
     return {
         userInfo: state.profileUserPage.user[0],
@@ -49,4 +69,5 @@ let mapStateToProps = (state) => {
 
 }
 
-export default connect(mapStateToProps, { setUserProfile, follow, unfollow, setNewPostText, setPosts, addPost})(UsersProfileContainer);
+
+export default connect(mapStateToProps, { setUserProfile, follow, unfollow, setNewPostText, setPosts, addPost})(withRouter(UsersProfileContainer));

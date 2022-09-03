@@ -61,7 +61,7 @@ const Users = (props) => {
                             </div>
                             <div className={s.center}>
                                 <div className={s.nameBlock}>
-                                    <div><p><NavLink to={"/profile/id"+u.id}>{u.firstname + " " + u.surname}</NavLink> , {u.old}</p></div>
+                                    <div><p><NavLink to={"/profile/"+u.id}>{u.firstname + " " + u.surname}</NavLink> , {u.old}</p></div>
                                     <div></div>
                                 </div>
                                 <div className={s.bio}>

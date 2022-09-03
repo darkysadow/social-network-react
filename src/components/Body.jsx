@@ -13,7 +13,7 @@ const Body = (props) => {
                     <Route path="/home" element={<Home />} />
                     <Route path="/*" element={<Messages />} />
                     <Route path='/users' element={<UsersContainer/>} />
-                    <Route path='/profile/*' element={<UsersProfileContainer />} />
+                    <Route path='/profile/:id' element={<UsersProfileContainer />} />
                 </Routes>
         </main>
     );

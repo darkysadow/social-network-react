@@ -59,7 +59,7 @@ const profileUserReducer = (state = initialState, action) => {
                 }).replace(/ /g, ' ');
                 let newPost = {
                     postId: ++idCounter,
-                    postOwner: 3,
+                    postOwner: 'id3',
                     postText: stateCopy.newPostText,
                     dateOfPost: formattedDate
                 };

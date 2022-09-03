@@ -11,6 +11,7 @@ import Notifications from "../home/right/notifications/Notifications";
 import FriendsZone from "../home/right/friends/FriendsZone";
 
 const UsersProfile = (props) => {
+
     let u = props.userInfo
     let onPostTextChange = (e) => {
         props.setNewPostText(e.target.value);
@@ -26,10 +27,10 @@ const UsersProfile = (props) => {
             <div className={s.navPanelBackground}>
                 <div className="container">
                     <ul className={s.navPanel}>
-                        <li><NavLink to={'/profile/id' + u.id}>Профіль</NavLink></li>
-                        <li><NavLink to={'/profile/id' + u.id}>Фотографії</NavLink></li>
-                        <li><NavLink to={'/profile/id' + u.id}>Друзі</NavLink></li>
-                        <li><NavLink to={'/profile/id' + u.id}>Про мене</NavLink></li>
+                        <li><NavLink to={'/profile/' + u.id}>Профіль</NavLink></li>
+                        <li><NavLink to={'/profile/' + u.id}>Фотографії</NavLink></li>
+                        <li><NavLink to={'/profile/' + u.id}>Друзі</NavLink></li>
+                        <li><NavLink to={'/profile/' + u.id}>Про мене</NavLink></li>
                         <li>
                             <div className={s.followButton}>
                                 {u.followed ? <button className={s.followed} onClick={() => { props.unfollow(u.id) }}><p>підписки</p></button> : <button className={s.unfollowed} onClick={() => { props.follow(u.id) }}>Підписатися</button>}
@@ -53,11 +54,11 @@ const UsersProfile = (props) => {
                             <div className={s.aboutBlock}>
                                 <div className={s.job}>
                                     <img src={jobIcon} alt="" />
-                                    <p>{!u.job ? "Колядник" : u.job}</p>
+                                    <p>{!u.job ? "Безробітній" : u.job}</p>
                                 </div>
                                 <div className={s.location}>
                                     <img src={locIcon} alt="" />
-                                    <p>{u.location.city}, {u.location.country}</p>
+                                    <p>{u.location.city}{u.location.city.length===0 || u.location.country.length===0?"":", "}{u.location.country}</p>
                                 </div>
                                 <div className={s.age}>
                                     <img src={ageIcon} alt="" />
