@@ -2,15 +2,14 @@ import React from "react";
 import UsersProfile from "./UsersProfile";
 import { connect } from 'react-redux';
 import { setUserProfile, follow, unfollow, setNewPostText, setPosts, addPost} from "../../redux/profile-reducer";
-import { serverUsersData, postsData } from "../../server-immitator/users-page";
+import { postsData } from "../../server-immitator/users-page";
 import { useParams } from "react-router-dom";
+import { getUserProfile, getPosts } from "../../api/api";
 
 class UsersProfileContainer extends React.Component {
     componentDidMount() {
-        
-        
-        this.props.setUserProfile(serverUsersData.find(user => user.id === this.props.router.params.id));
-        this.props.setPosts(postsData.id1);
+        this.props.setUserProfile(getUserProfile(this.props.router.params.id));
+        this.props.setPosts(getPosts(this.props.router.params.id));
         
     }
     render() {
@@ -22,7 +21,7 @@ class UsersProfileContainer extends React.Component {
             if (!u.backgroundPhoto && !u.avatar && !u.location && !u.bio && !u.old) {
                 <></>
             } else {
-                return (<UsersProfile serverUsersData={this.props.serverUsersData} newPostText={this.props.newPostText} posts={this.props.posts} userInfo={u} follow={this.props.follow} unfollow={this.props.unfollow} setNewPostText={this.props.setNewPostText} setPosts={this.props.posts} addPost={this.props.addPost}/>)
+                return (<UsersProfile getUserProfile={getUserProfile} newPostText={this.props.newPostText} posts={this.props.posts} userInfo={u} follow={this.props.follow} unfollow={this.props.unfollow} setNewPostText={this.props.setNewPostText} setPosts={this.props.posts} addPost={this.props.addPost}/>)
             }
         }
     }
@@ -64,7 +63,6 @@ let mapStateToProps = (state) => {
         userInfo: state.profileUserPage.user[0],
         newPostText: state.profileUserPage.newPostText,
         posts: state.profileUserPage.posts,
-        serverUsersData: serverUsersData
     }
 
 }

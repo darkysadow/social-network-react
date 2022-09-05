@@ -1,3 +1,5 @@
+import { postsData } from "../server-immitator/users-page";
+
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -52,18 +54,20 @@ const profileUserReducer = (state = initialState, action) => {
             let stateCopy = { ...state };
             stateCopy.posts = [...state.posts];
             if (stateCopy.newPostText !== "" && stateCopy.newPostText !== " ") {
-                let idCounter = stateCopy.posts.length;
+                let idCounter = postsData.length;
                 const date = new Date();
                 const formattedDate = date.toLocaleDateString('uk-UA', {
                     day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: 'numeric'
                 }).replace(/ /g, ' ');
                 let newPost = {
+                    wherePost: action.userId,
                     postId: ++idCounter,
                     postOwner: 'id3',
                     postText: stateCopy.newPostText,
                     dateOfPost: formattedDate
                 };
                 stateCopy.posts.unshift(newPost);
+                postsData.push(newPost);
                 stateCopy.newPostText = '';
             }
             return stateCopy;
@@ -78,6 +82,6 @@ export const follow = (userId) => ({ type: FOLLOW, userId });
 export const unfollow = (userId) => ({ type: UNFOLLOW, userId });
 export const setNewPostText = (newText) => ({ type: SET_NEW_POST_TEXT, newText });
 export const setPosts = (posts) => ({ type: SET_POSTS, posts });
-export const addPost = () => ({ type: ADD_POST });
+export const addPost = (userId) => ({ type: ADD_POST , userId });
 
 export default profileUserReducer;

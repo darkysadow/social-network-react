@@ -5,8 +5,10 @@ import BlockTitle from "../block-styles/BlockTitle";
 import { serverUsersData } from "../../server-immitator/users-page";
 import preloader from './../../img/preloader.gif';
 import { NavLink } from "react-router-dom";
+import { toggleSubcribeToUserOnDB } from "../../api/api";
 
 const Users = (props) => {
+    let defaultAvatar = 'https://png.pngitem.com/pimgs/s/30-307318_camera-circle-youtube-icon-black-hd-png-download.png';
     let slow3g = React.createRef();
     let appendUsers = (e) => {
         e.target.disabled = true; //відключає кнопку
@@ -53,10 +55,10 @@ const Users = (props) => {
                         <div className={s.info}>
                             <div className={s.left}>
                                 <div className={s.avatar}>
-                                    <img src={u.avatar} alt={u.firstname + " " + u.surname} />
+                                    <img src={!u.avatar?defaultAvatar:u.avatar} alt={u.firstname + " " + u.surname} />
                                 </div>
                                 <div className={s.followButton}>
-                                 {u.followed ? <button className={s.followed} onClick={() => {props.unfollow(u.id) }}><p>підписки</p></button> : <button className={s.unfollowed} onClick={() => { props.follow(u.id) }}>Підписатися</button>}
+                                 {u.followed ? <button className={s.followed} onClick={() => {props.unfollow(u.id); toggleSubcribeToUserOnDB(u.id) }}><p>підписки</p></button> : <button className={s.unfollowed} onClick={() => { props.follow(u.id); toggleSubcribeToUserOnDB(u.id) }}>Підписатися</button>}
                                 </div>
                             </div>
                             <div className={s.center}>

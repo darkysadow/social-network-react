@@ -9,12 +9,23 @@ import ageIcon from "./../../img/svg/age.svg";
 import LikeList from "../home/left/like/LikeList";
 import Notifications from "../home/right/notifications/Notifications";
 import FriendsZone from "../home/right/friends/FriendsZone";
+import { toggleSubcribeToUserOnDB } from "../../api/api";
 
 const UsersProfile = (props) => {
 
     let u = props.userInfo
+    let defaultAvatar = 'https://png.pngitem.com/pimgs/s/30-307318_camera-circle-youtube-icon-black-hd-png-download.png';
+    let defaultBackgroundPhoto = 'https://i.pinimg.com/originals/f0/31/de/f031de8ca5d2fbacca6c4ae08c3fb725.png';
     let onPostTextChange = (e) => {
         props.setNewPostText(e.target.value);
+    }
+    let follow = () => {
+        props.follow(u.id); 
+        toggleSubcribeToUserOnDB(u.id);
+    }
+    let unfollow = () => {
+        props.unfollow(u.id);
+        toggleSubcribeToUserOnDB(u.id);
     }
     if(!props.posts) {
         <></>
@@ -22,7 +33,7 @@ const UsersProfile = (props) => {
     return (
         <div className={s.usersPage}>
             <div className={s.profileBackgound}>
-                <img src={u.backgroundPhoto} alt="" />
+                <img src={!u.backgroundPhoto?defaultBackgroundPhoto:u.backgroundPhoto} alt="" />
             </div>
             <div className={s.navPanelBackground}>
                 <div className="container">
@@ -33,7 +44,7 @@ const UsersProfile = (props) => {
                         <li><NavLink to={'/profile/' + u.id}>Про мене</NavLink></li>
                         <li>
                             <div className={s.followButton}>
-                                {u.followed ? <button className={s.followed} onClick={() => { props.unfollow(u.id) }}><p>підписки</p></button> : <button className={s.unfollowed} onClick={() => { props.follow(u.id) }}>Підписатися</button>}
+                                {u.followed ? <button className={s.followed} onClick={unfollow}><p>підписки</p></button> : <button className={s.unfollowed} onClick={follow}>Підписатися</button>}
                             </div>
                         </li>
                     </ul>
@@ -42,7 +53,7 @@ const UsersProfile = (props) => {
             </div>
             <div className="container">
                 <div className={`${s.avatarBlock}`}>
-                    <img src={u.avatar} alt="" />
+                    <img src={!u.avatar?defaultAvatar:u.avatar} alt="" />
                 </div>
                 <div className={s.usersPageContainer}>
                     <div className={s.left}>
@@ -95,18 +106,18 @@ const UsersProfile = (props) => {
                             </div>
                             <div className={s.postForm}>
                                 <textarea placeholder="Почніть писати тут..." onChange={onPostTextChange} value={props.newPostText} />
-                                <button onClick={() => props.addPost()}>Надіслати</button>
+                                <button onClick={() => props.addPost(u.id)}>Надіслати</button>
                             </div>
                         </div>
                         <div className={s.postsBlock}>
                             {props.posts.map(post => <div key={post.postId} className={`${s.item} ${BlockStyles.blockShadow} ${BlockStyles.blockMargin}`}>
                                 <div className={s.top}>
                                     <div className={s.avatar}>
-                                        <img src={props.serverUsersData.find(user => user.id === post.postOwner).avatar} alt="" />
+                                        <img src={props.getUserProfile(post.postOwner).avatar} alt="" />
                                     </div>
                                     <div className={s.whoAndWhen}>
                                         <div className={s.who}>
-                                            <a>{`${props.serverUsersData.find(user => user.id === post.postOwner).firstname} ${props.serverUsersData.find(user => user.id === post.postOwner).surname}`}</a>
+                                            <a>{`${props.getUserProfile(post.postOwner).firstname} ${props.getUserProfile(post.postOwner).surname}`}</a>
                                         </div>
                                         <div className={s.when}>
                                             <p>{post.dateOfPost.toString()}</p>

@@ -2,7 +2,7 @@ import volodya from './../../src/img/vovchik.jpg';
 import bodya from './../../src/img/bodya.jpg';
 import golova from './../../src/img/golova.jpg';
 
-let usersData = [
+export let serverUsersData = [
     {
         id: 'id0',
         job: 'Колядник',
@@ -410,47 +410,33 @@ let usersData = [
     }
 ];
 
-let defaultBackgroundPhoto = 'https://i.pinimg.com/originals/f0/31/de/f031de8ca5d2fbacca6c4ae08c3fb725.png';
-let defaultAvatar = 'https://png.pngitem.com/pimgs/s/30-307318_camera-circle-youtube-icon-black-hd-png-download.png';
-export let serverUsersData = []
-window.serverUsersData = serverUsersData;
-usersData.map(u => serverUsersData.push({id: u.id, followed: u.followed, job: u.job,
-    avatar: u.avatar===''?defaultAvatar:u.avatar, 
-    firstname: u.firstname, surname: u.surname, bio: u.bio, old: u.old, 
-    backgroundPhoto: !u.backgroundPhoto||u.backgroundPhoto===''?defaultBackgroundPhoto:u.backgroundPhoto
-    ,location: {city: u.location.city, country: u.location.country}}));
-
-export let postsData = {
-    id1: [
-        {   
-            wherePost: 'id1',
-            postId: 2,
-            postOwner: 'id2',
-            postText: "Lorem ipsum sit dolor",
-            dateOfPost: '31 серп. 2022 р. 15:40'
-        },
-        {
-            wherePost: 'id1',
-            postId: 1,
-            postOwner: 'id3',
-            postText: 'Мотівація то є сильна',
-            dateOfPost: '30 серп. 2022 р. 22:01'
-        }
-    ],
-    id2: [
-        {
-            wherePost: 'id2',
-            postId: 2,
-            postOwner: 'id2',
-            postText: 'Раз раз...',
-            dateOfPost: '31 серп. 2022 р. 14:24'
-        },
-        {
-            wherePost: 'id1',
-            postId: 1,
-            postOwner: 'id21',
-            postText: 'полірни',
-            dateOfPost: '31 серп. 2022 р. 13:48'
-        }
-    ]
-}
+export let postsData = [
+    {
+        wherePost: 'id1',
+        postId: 0,
+        postOwner: 'id3',
+        postText: 'Мотівація то є сильна',
+        dateOfPost: '30 серп. 2022 р. 22:01'
+    },
+    {
+        wherePost: 'id1',
+        postId: 1,
+        postOwner: 'id21',
+        postText: 'полірни',
+        dateOfPost: '31 серп. 2022 р. 13:48'
+    },
+    {
+        wherePost: 'id2',
+        postId: 2,
+        postOwner: 'id2',
+        postText: 'Раз раз...',
+        dateOfPost: '31 серп. 2022 р. 14:24'
+    },
+    {   
+        wherePost: 'id1',
+        postId: 3,
+        postOwner: 'id2',
+        postText: "Lorem ipsum sit dolor",
+        dateOfPost: '31 серп. 2022 р. 15:40'
+    }
+];
