@@ -103,3 +103,39 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+.navButtonsContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 50px 0 0 0;
+}
+
+.navButtonPrev button,
+.navButtonNext button {
+    padding: 10px 15px;
+    border-radius: 0px;
+}
+
+.navButtonPrev {
+}
+
+.navInput {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.navInput input {
+    text-align: center;
+}
+
+.disabledButton button {
+    background-color: gray;
+}
+
+.navButtonNext {
+
+}

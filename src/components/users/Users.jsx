@@ -95,7 +95,7 @@ const Users = (props) => {
                                         <img src={!u.photos.small?defaultAvatar:u.photos.small} alt={u.name} />
                                     </div>
                                     <div className={s.followButton}>
-                                     {u.followed ? <button className={s.followed} onClick={() => {props.unfollow(u.id); toggleSubcribeToUserOnDB(u.id) }}><p>підписки</p></button> : <button className={s.unfollowed} onClick={() => { props.follow(u.id); toggleSubcribeToUserOnDB(u.id) }}>Підписатися</button>}
+                                     {u.followed ? <button className={s.followed} onClick={() => {props.unfollow(u.id) }}><p>підписки</p></button> : <button className={s.unfollowed} onClick={() => { props.follow(u.id)}}>Підписатися</button>}
                                     </div>
                                 </div>
                                 <div className={s.center}>
@@ -113,8 +113,33 @@ const Users = (props) => {
                             </div>
                         </div>)
                     :<Preloader />}
-                {/*Перевірка чи є що завантажувати з так званого серверу*/}
-                {(props.users.length < serverUsersData.length) ? <div className={s.seeMoreButton}><button onClick={props.appendUsers}>{props.isFetching ? <img src={preloader} height="17px" width="17px" /> : "показати ще"}</button></div> : <p></p>}
+                {/*Перевірка чи є що завантажувати з так званого серверу
+                {(props.users.length < serverUsersData.length) ? <div className={s.seeMoreButton}><button onClick={props.nextPage}>{props.isFetching ? <img src={preloader} height="17px" width="17px" /> : "показати ще"}</button></div> : <p></p>*/}
+                {//Функціонал з DAL
+                   // <div className={s.seeMoreButton}><button onClick={props.nextPageButton}>{props.isFetching ? <img src={preloader} height="17px" width="17px" /> : "показати ще"}</button></div>
+                }
+
+                {//Прототип навігації по сторінках
+                    <div className={s.navButtonsContainer}>
+                        {props.pageNumber!==1&&!props.isFetching?<div className={s.navButtonPrev }>
+                            <button onClick={props.prevPageButton}>← Попередня</button>
+                        </div>:<div className={s.navButtonPrev + " " + s.disabledButton}>
+                            <button onClick={props.prevPageButton} disabled={true}>← Попередня</button>
+                        </div>}
+                        <div className={s.navInput}>
+                            {
+                                //<input type="number" value={props.pageNumber}/>
+                            }
+                            <p>{props.pageNumber}</p>
+                        </div>
+                        {props.isFetching?<div className={s.navButtonNext + " " + s.disabledButton}>
+                            <button onClick={props.nextPageButton} disabled={true}>Наступна →</button>
+                        </div>:
+                        <div className={s.navButtonNext}>
+                            <button onClick={props.nextPageButton}>Наступна →</button>
+                        </div>}
+                    </div>
+                }
 
             </div>
         </div>
