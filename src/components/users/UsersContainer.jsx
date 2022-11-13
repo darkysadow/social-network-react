@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { followUser, getUsers, unfollowUser, toggleIsFetching, nextPage, prevPage } from "../../redux/users-reducer";
 import Users from "./Users";
-//import { serverUsersData } from "../../server-immitator/users-page";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
