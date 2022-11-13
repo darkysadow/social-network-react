@@ -6,10 +6,16 @@ import { serverUsersData } from "../../server-immitator/users-page";
 import preloader from './../../img/preloader.gif';
 import { NavLink } from "react-router-dom";
 import { toggleSubcribeToUserOnDB } from "../../api/api";
+import Preloader from "../common/Preloader";
 
 const Users = (props) => {
     let defaultAvatar = 'https://png.pngitem.com/pimgs/s/30-307318_camera-circle-youtube-icon-black-hd-png-download.png';
     let slow3g = React.createRef();
+    /*let appendUsers = () => {
+        pageNumber++;
+        alert(pageNumber)
+        props.getUsers(pageNumber)
+    }
     let appendUsers = (e) => {
         e.target.disabled = true; //відключає кнопку
         props.toggleIsFetching(true); //міняє стан на очікування данних
@@ -38,19 +44,19 @@ const Users = (props) => {
             
         }
         
-    }
+    }*/
 
-    return(
+    return (
         <div className={s.usersContainer}>
             <div className={s.usersAgregator + " " + BlockStyles.blockShadow + " " + BlockStyles.blockMargin}>
                 <BlockTitle Text="Фільтри" />
                 <div className={s.slow3g}>
                     <p>Slow 3G</p>
-                    <input type="checkbox" ref={slow3g}/>
+                    <input type="checkbox" ref={slow3g} />
                 </div>
             </div>
             <div className={s.usersList + " " + BlockStyles.blockShadow + " " + BlockStyles.blockMargin}>
-                {
+                {/*
                     props.users.map(u => <div key={u.id} className={s.userBlock}>
                         <div className={s.info}>
                             <div className={s.left}>
@@ -80,12 +86,38 @@ const Users = (props) => {
                             </div>
                         </div>
                     </div>)
-            }
+                    */}
+                    {!props.isFetching?
+                        props.users.map(u => <div key={u.id} className={s.userBlock}>
+                            <div className={s.info}>
+                                <div className={s.left}>
+                                    <div className={s.avatar}>
+                                        <img src={!u.photos.small?defaultAvatar:u.photos.small} alt={u.name} />
+                                    </div>
+                                    <div className={s.followButton}>
+                                     {u.followed ? <button className={s.followed} onClick={() => {props.unfollow(u.id); toggleSubcribeToUserOnDB(u.id) }}><p>підписки</p></button> : <button className={s.unfollowed} onClick={() => { props.follow(u.id); toggleSubcribeToUserOnDB(u.id) }}>Підписатися</button>}
+                                    </div>
+                                </div>
+                                <div className={s.center}>
+                                    <div className={s.nameBlock}>
+                                        <div><p><NavLink to={"/profile/"+u.id}>{u.name}</NavLink></p></div>
+                                        <div></div>
+                                    </div>
+                                    <div className={s.bio}>
+                                        {!u.status?'':u.status}
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={s.right}>
+                            
+                            </div>
+                        </div>)
+                    :<Preloader />}
                 {/*Перевірка чи є що завантажувати з так званого серверу*/}
-                {(props.users.length < serverUsersData.length)?<div className={s.seeMoreButton}><button onClick={appendUsers}>{props.isFetching?<img src={preloader} height="17px" width="17px"/>:"показати ще"}</button></div>:<p></p>}
-            
+                {(props.users.length < serverUsersData.length) ? <div className={s.seeMoreButton}><button onClick={props.appendUsers}>{props.isFetching ? <img src={preloader} height="17px" width="17px" /> : "показати ще"}</button></div> : <p></p>}
+
+            </div>
         </div>
-    </div>
     )
 }
 
