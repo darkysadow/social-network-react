@@ -1,3 +1,4 @@
+import { profileAPI } from "../api/apiDAL";
 import { postsData } from "../server-immitator/users-page";
 
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
@@ -6,11 +7,13 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_NEW_POST_TEXT = 'SET_NEW_POST_TEXT';
 const SET_POSTS = 'SET_POSTS';
 const ADD_POST = 'ADD_POST';
+const SET_FOLLOW_STATUS = 'SET_FOLLOW_STATUS';
 
 let initialState = {
-    user: [],
+    user: null,
     newPostText: '',
-    posts: []
+    posts: [],
+    isFollowed: false
 }
 
 const profileUserReducer = (state = initialState, action) => {
@@ -18,7 +21,7 @@ const profileUserReducer = (state = initialState, action) => {
         case SET_USER_PROFILE:
             return {
                 ...state,
-                user: [action.user]
+                user: action.user
             }
         case FOLLOW:
             return {
@@ -72,6 +75,11 @@ const profileUserReducer = (state = initialState, action) => {
             }
             return stateCopy;
         }
+        case SET_FOLLOW_STATUS:
+            return {
+                ...state,
+                isFollowed: action.boolean
+            }
         default:
             return state;
     }
@@ -82,6 +90,16 @@ export const follow = (userId) => ({ type: FOLLOW, userId });
 export const unfollow = (userId) => ({ type: UNFOLLOW, userId });
 export const setNewPostText = (newText) => ({ type: SET_NEW_POST_TEXT, newText });
 export const setPosts = (posts) => ({ type: SET_POSTS, posts });
-export const addPost = (userId) => ({ type: ADD_POST , userId });
+export const addPost = (userId) => ({ type: ADD_POST, userId });
+export const setFollowStatus = (boolean) => ({ type: SET_FOLLOW_STATUS, boolean })
+
+export const getUserProfile = (userId) => (dispatch) => {
+    profileAPI.getUserProfile(userId).then(response => {
+        dispatch(setUserProfile(response.data));
+    });
+    profileAPI.isFollowed(userId).then(response => {
+        dispatch(setFollowStatus(response.data))
+    })
+}
 
 export default profileUserReducer;

@@ -27,13 +27,11 @@ const UsersProfile = (props) => {
         props.unfollow(u.id);
         toggleSubcribeToUserOnDB(u.id);
     }
-    if(!props.posts) {
-        <></>
-    } else {
+    
     return (
         <div className={s.usersPage}>
             <div className={s.profileBackgound}>
-                <img src={!u.backgroundPhoto?defaultBackgroundPhoto:u.backgroundPhoto} alt="" />
+                <img src={!u.photos.large?defaultBackgroundPhoto:u.photos.large} alt="" />
             </div>
             <div className={s.navPanelBackground}>
                 <div className="container">
@@ -44,7 +42,7 @@ const UsersProfile = (props) => {
                         <li><NavLink to={'/profile/' + u.id}>Про мене</NavLink></li>
                         <li>
                             <div className={s.followButton}>
-                                {u.followed ? <button className={s.followed} onClick={unfollow}><p>підписки</p></button> : <button className={s.unfollowed} onClick={follow}>Підписатися</button>}
+                                {props.isFollowed ? <button className={s.followed} onClick={unfollow}><p>підписки</p></button> : <button className={s.unfollowed} onClick={follow}>Підписатися</button>}
                             </div>
                         </li>
                     </ul>
@@ -53,27 +51,20 @@ const UsersProfile = (props) => {
             </div>
             <div className="container">
                 <div className={`${s.avatarBlock}`}>
-                    <img src={!u.avatar?defaultAvatar:u.avatar} alt="" />
+                    <img src={!u.photos.small?defaultAvatar:u.photos.small} alt="" />
                 </div>
                 <div className={s.usersPageContainer}>
                     <div className={s.left}>
                         <div className={`${s.bioBlock} ${BlockStyles.blockMargin} ${BlockStyles.blockShadow}`}>
-                            <BlockTitle Classname={s.messagesBar__title} Text={u.firstname + " " + u.surname} />
+                            <BlockTitle Classname={s.messagesBar__title} Text={u.fullName} />
                             <div className={s.bio}>
-                                <p>{u.bio}</p>
+                                <p>{!u.aboutMe?'':u.aboutMe}</p>
                             </div>
                             <div className={s.aboutBlock}>
                                 <div className={s.job}>
                                     <img src={jobIcon} alt="" />
-                                    <p>{!u.job ? "Безробітній" : u.job}</p>
-                                </div>
-                                <div className={s.location}>
-                                    <img src={locIcon} alt="" />
-                                    <p>{u.location.city}{u.location.city.length===0 || u.location.country.length===0?"":", "}{u.location.country}</p>
-                                </div>
-                                <div className={s.age}>
-                                    <img src={ageIcon} alt="" />
-                                    <p>{u.old + " років"}</p>
+                                    <p>{u.lookingForAJob?"В пошуках роботи":"Не в пошуках роботи"}</p>
+                                    <p>{u.lookingForAJob?(!u.lookingForAJobDescription ? "" : u.lookingForAJobDescription):''}</p>
                                 </div>
                             </div>
                         </div>
@@ -143,6 +134,6 @@ const UsersProfile = (props) => {
             </div>
         </div>
     ); }
-}
+
 
 export default UsersProfile;

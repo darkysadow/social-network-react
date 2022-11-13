@@ -1,46 +1,42 @@
 import React from "react";
 import UsersProfile from "./UsersProfile";
 import { connect } from 'react-redux';
-import { setUserProfile, follow, unfollow, setNewPostText, setPosts, addPost} from "../../redux/profile-reducer";
-import { postsData } from "../../server-immitator/users-page";
+import { getUserProfile, follow, unfollow, setNewPostText, setPosts, addPost} from "../../redux/profile-reducer";
 import { useParams } from "react-router-dom";
-import { getUserProfile, getPosts } from "../../api/api";
+import Preloader from './../common/Preloader.jsx'
 
 class UsersProfileContainer extends React.Component {
     componentDidMount() {
-        this.props.setUserProfile(getUserProfile(this.props.router.params.id));
-        this.props.setPosts(getPosts(this.props.router.params.id));
-        
+        this.props.getUserProfile(this.props.router.params.id);
+    }
+    componentDidUpdate(prevProps) {
+        if (prevProps.router.params.id !== this.props.router.params.id) {
+            this.props.getUserProfile(this.props.router.params.id)
+        }
+        if (prevProps.userInfo !== this.props.userInfo) {
+            console.log(this.props.userInfo)
+        }
     }
     render() {
-
-        if (!this.props.userInfo) {
-            return <></>;
+        /*
+          "facebook": null,
+    "website": null,
+    "vk": null,
+    "twitter": null,
+    "instagram": null,
+    "youtube": null,
+    "github": null,
+    "mainLink": null
+        */
+        if (!this.props.userInfo/*обов'язково в стейті має бути null перед тим як туди прийде респонс з бд*/) {
+            return <Preloader />;
         } else {
             let u = this.props.userInfo;
-            if (!u.backgroundPhoto && !u.avatar && !u.location && !u.bio && !u.old) {
-                <></>
-            } else {
-                return (<UsersProfile getUserProfile={getUserProfile} newPostText={this.props.newPostText} posts={this.props.posts} userInfo={u} follow={this.props.follow} unfollow={this.props.unfollow} setNewPostText={this.props.setNewPostText} setPosts={this.props.posts} addPost={this.props.addPost}/>)
-            }
+            return (<UsersProfile getUserProfile={getUserProfile} newPostText={this.props.newPostText} posts={this.props.posts} userInfo={u} follow={this.props.follow} unfollow={this.props.unfollow} setNewPostText={this.props.setNewPostText} setPosts={this.props.posts} addPost={this.props.addPost} isFollowed={this.props.isFollowed} />)
         }
     }
 }
 
-{/*
-        id: 1,
-        followed: true,
-        avatar: 'https://i.ytimg.com/vi/45dH29TDWtM/hqdefault.jpg',
-        firstname: 'Петро',
-        surname: 'Щур',
-        bio: 'Скільки себе пам\`ятаю, завжди світили мені... Скільки себе пам\`ятаю, завжди світили мені... Скільки себе пам\`ятаю, завжди світили мені... Скільки себе пам\`ятаю, завжди світили мені...',
-        location: {
-            city: 'с.Мужилів',
-            country: 'Україна'
-        },
-        old: 35,
-        backgroundPhoto: 'https://i.pinimg.com/originals/f0/31/de/f031de8ca5d2fbacca6c4ae08c3fb725.png'
-*/}
 
 let withRouter = (Component) => {
     let ComponentWithRouterProp = (props) => {
@@ -56,16 +52,15 @@ let withRouter = (Component) => {
     return ComponentWithRouterProp;
 }
 
-
-
 let mapStateToProps = (state) => {
     return {
-        userInfo: state.profileUserPage.user[0],
+        userInfo: state.profileUserPage.user,
         newPostText: state.profileUserPage.newPostText,
         posts: state.profileUserPage.posts,
+        isFollowed: state.profileUserPage.isFollowed
     }
 
 }
 
 
-export default connect(mapStateToProps, { setUserProfile, follow, unfollow, setNewPostText, setPosts, addPost})(withRouter(UsersProfileContainer));
+export default connect(mapStateToProps, { getUserProfile, follow, unfollow, setNewPostText, setPosts, addPost})(withRouter(UsersProfileContainer));

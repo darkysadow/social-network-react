@@ -21,8 +21,11 @@ export const usersAPI = {
 }
 
 export const profileAPI = {
-    getProfile(userId) {
+    getUserProfile(userId) {
         return instance.get(`profile/${userId}`)
+    },
+    isFollowed(userId) {
+        return instance.get(`follow/${userId}`)
     }
 }
 
