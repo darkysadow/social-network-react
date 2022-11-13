@@ -134,6 +134,7 @@
 
 .disabledButton button {
     background-color: gray;
+    opacity: 0.1;
 }
 
 .navButtonNext {

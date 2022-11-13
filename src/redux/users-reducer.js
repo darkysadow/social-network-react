@@ -6,11 +6,13 @@ const SET_USERS = 'SET_USERS';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const NEXT_PAGE = "NEXT_PAGE";
 const PREV_PAGE = "PREV_PAGE";
+const TOTAL_USERS = 'TOTAL_USERS';
 
 let initialState = {
     users: [],
     isFetching: false,
-    pageNumber: 1
+    pageNumber: 1,
+    totalUsers: 0
 }
 
 let usersReducer = (state = initialState, action) => {
@@ -53,6 +55,10 @@ let usersReducer = (state = initialState, action) => {
             return {
                 ...state, pageNumber: state.pageNumber-1
             }
+        case TOTAL_USERS:
+            return {
+                ...state, totalUsers: action.count
+            }
         default:
             return state;
     }
@@ -64,12 +70,15 @@ export const setUsers = (users) => ({type: SET_USERS, users});
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 export const nextPage = () => ({type: NEXT_PAGE});
 export const prevPage = () => ({type: PREV_PAGE});
+export const totalUsers = (count) => ({type: TOTAL_USERS, count})
 
 export const getUsers = (pageNumber) => (dispatch) => {
     dispatch(toggleIsFetching(true));
     usersAPI.getUsers(pageNumber).then(data => {
         dispatch(toggleIsFetching(false));
         dispatch(setUsers(data.data.items));
+        console.log(data.data.totalCount);
+        dispatch(totalUsers(data.data.totalCount));
     })
 }
 

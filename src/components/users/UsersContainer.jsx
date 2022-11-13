@@ -21,7 +21,7 @@ class UsersContainer extends React.Component {
     render() {
         return (
             <div className="container">    
-        <Users users={this.props.users} pageNumber={this.props.pageNumber} isFetching={this.props.isFetching} follow={this.props.followUser} unfollow={this.props.unfollowUser} getUsers={this.props.getUsers} toggleIsFetching={this.props.toggleIsFetching} nextPageButton={this.nextPageButton} prevPageButton={this.prevPageButton} />
+        <Users users={this.props.users} pageNumber={this.props.pageNumber} isFetching={this.props.isFetching} totalUsers={this.props.totalUsers} follow={this.props.followUser} unfollow={this.props.unfollowUser} getUsers={this.props.getUsers} toggleIsFetching={this.props.toggleIsFetching} nextPageButton={this.nextPageButton} prevPageButton={this.prevPageButton} />
         </div>)
     }
 }
@@ -30,7 +30,8 @@ const mapStateToProps = (state) => {
     return {
         users: state.usersPage.users,
         isFetching: state.usersPage.isFetching,
-        pageNumber: state.usersPage.pageNumber
+        pageNumber: state.usersPage.pageNumber,
+        totalUsers: state.usersPage.totalUsers
     }
 }
 

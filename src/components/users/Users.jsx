@@ -55,7 +55,7 @@ const Users = (props) => {
                             {
                                 //<input type="number" value={props.pageNumber}/>
                             }
-                            <p>{props.pageNumber}</p>
+                            <p>{props.pageNumber} / {props.totalUsers%10==0?props.totalUsers/10:Math.round(props.totalUsers/10)}</p>
                         </div>
                         {props.isFetching ? <div className={s.navButtonNext + " " + s.disabledButton}>
                             <button onClick={props.nextPageButton} disabled={true}>Наступна →</button>
