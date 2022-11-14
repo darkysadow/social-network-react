@@ -1,4 +1,4 @@
-import { profileAPI } from "../api/apiDAL";
+import { profileAPI, usersAPI } from "../api/apiDAL";
 import { postsData } from "../server-immitator/users-page";
 
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
@@ -24,26 +24,6 @@ const profileUserReducer = (state = initialState, action) => {
             return {
                 ...state,
                 user: action.user
-            }
-        case FOLLOW:
-            return {
-                ...state,
-                user: state.user.map(u => {
-                    if (u.id === action.userId) {
-                        return { ...u, followed: true }
-                    }
-                    return u;
-                })
-            }
-        case UNFOLLOW:
-            return {
-                ...state,
-                user: state.user.map(u => {
-                    if (u.id === action.userId) {
-                        return { ...u, followed: false }
-                    }
-                    return u;
-                })
             }
         case SET_NEW_POST_TEXT:
             return {
@@ -93,8 +73,6 @@ const profileUserReducer = (state = initialState, action) => {
 }
 
 export const setUserProfile = (user) => ({ type: SET_USER_PROFILE, user });
-export const follow = (userId) => ({ type: FOLLOW, userId });
-export const unfollow = (userId) => ({ type: UNFOLLOW, userId });
 export const setNewPostText = (newText) => ({ type: SET_NEW_POST_TEXT, newText });
 export const setPosts = (posts) => ({ type: SET_POSTS, posts });
 export const addPost = (userId) => ({ type: ADD_POST, userId });
@@ -110,6 +88,22 @@ export const getUserProfile = (userId) => (dispatch) => {
     });
     profileAPI.isFollowed(userId).then(response => {
         dispatch(setFollowStatus(response.data))
+    })
+}
+
+export const followUserInProfile = (userId) => (dispatch) => {
+    usersAPI.follow(userId).then(response => {
+        if(response.data.resultCode == 0) {
+            dispatch(setFollowStatus(true));
+        }
+    })
+}
+
+export const unfollowUserInProfile = (userId) => (dispatch) => {
+    usersAPI.unfollow(userId).then(response => {
+        if(response.data.resultCode == 0) {
+            dispatch(setFollowStatus(false));
+        }
     })
 }
 

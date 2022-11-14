@@ -1,7 +1,7 @@
 import React from "react";
 import UsersProfile from "./UsersProfile";
 import { connect } from 'react-redux';
-import { getUserProfile, follow, unfollow, setNewPostText, setPosts, addPost} from "../../redux/profile-reducer";
+import { getUserProfile, followUserInProfile, unfollowUserInProfile, unfollow, setNewPostText, setPosts, addPost} from "../../redux/profile-reducer";
 import { useParams } from "react-router-dom";
 import Preloader from './../common/Preloader.jsx'
 
@@ -32,7 +32,7 @@ class UsersProfileContainer extends React.Component {
             return <Preloader />;
         } else {
             let u = this.props.userInfo;
-            return (<UsersProfile posts={this.props.posts} userInfo={u} follow={this.props.follow} unfollow={this.props.unfollow} setNewPostText={this.props.setNewPostText} setPosts={this.props.posts} addPost={this.props.addPost} isFollowed={this.props.isFollowed} status={this.props.status}/>)
+            return (<UsersProfile posts={this.props.posts} userInfo={u} follow={this.props.followUserInProfile} unfollow={this.props.unfollowUserInProfile} setNewPostText={this.props.setNewPostText} setPosts={this.props.posts} addPost={this.props.addPost} isFollowed={this.props.isFollowed} status={this.props.status}/>)
         }
     }
 }
@@ -64,4 +64,4 @@ let mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { getUserProfile, follow, unfollow, setNewPostText, setPosts, addPost})(withRouter(UsersProfileContainer));
+export default connect(mapStateToProps, { getUserProfile, followUserInProfile, unfollowUserInProfile, setNewPostText, setPosts, addPost})(withRouter(UsersProfileContainer));

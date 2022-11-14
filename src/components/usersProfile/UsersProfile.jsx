@@ -20,12 +20,10 @@ const UsersProfile = (props) => {
         props.setNewPostText(e.target.value);
     }
     let follow = () => {
-        props.follow(u.id); 
-        toggleSubcribeToUserOnDB(u.id);
+        props.follow(u.userId); 
     }
     let unfollow = () => {
-        props.unfollow(u.id);
-        toggleSubcribeToUserOnDB(u.id);
+        props.unfollow(u.userId);
     }
     
     return (
