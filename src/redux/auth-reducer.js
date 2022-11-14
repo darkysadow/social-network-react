@@ -19,7 +19,7 @@ let authReducer = (state = initialState, action) => {
 
 export const changeAuthStatus = (authStatus) => ({ type: AUTH_STATUS, authStatus })
 
-export const checkAuthMe = (dispatch) => {
+export const checkAuthMe = () => (dispatch) => {
     authAPI.me().then(response => {
         if(response.data.resultCode == 1) {
             dispatch(changeAuthStatus(false));

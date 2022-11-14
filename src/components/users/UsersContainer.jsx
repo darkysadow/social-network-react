@@ -1,19 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { followUser, getUsers, unfollowUser, toggleIsFetching, nextPage, prevPage } from "../../redux/users-reducer";
-import { changeAuthStatus, checkAuthMe } from "../../redux/auth-reducer";
+import { checkAuthMe } from "../../redux/auth-reducer";
 import Users from "./Users";
-import { authAPI } from "../../api/apiDAL";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
-        authAPI.me().then(response => {
-            if (response.data.resultCode == 1) {
-                this.props.changeAuthStatus(false);
-            } else if (response.data.resultCode == 0) {
-                this.props.changeAuthStatus(true)
-            }
-        })
+        this.props.checkAuthMe();
         this.props.getUsers(this.props.pageNumber);
     }
     nextPageButton = () => {
@@ -34,7 +27,7 @@ class UsersContainer extends React.Component {
                     <Users users={this.props.users} pageNumber={this.props.pageNumber} isFetching={this.props.isFetching} totalUsers={this.props.totalUsers} follow={this.props.followUser} unfollow={this.props.unfollowUser} getUsers={this.props.getUsers} toggleIsFetching={this.props.toggleIsFetching} nextPageButton={this.nextPageButton} prevPageButton={this.prevPageButton} />
                 </div>)
         } else {
-            return (<div className="container">Соси хуй, бидло</div>)
+            return (<div className="container">You are not authorised</div>)
         }
     }
 }
@@ -49,4 +42,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { changeAuthStatus, followUser, unfollowUser, getUsers, toggleIsFetching, nextPage, prevPage })(UsersContainer);
+export default connect(mapStateToProps, { checkAuthMe, followUser, unfollowUser, getUsers, toggleIsFetching, nextPage, prevPage })(UsersContainer);
