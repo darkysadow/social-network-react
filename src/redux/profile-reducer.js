@@ -8,12 +8,14 @@ const SET_NEW_POST_TEXT = 'SET_NEW_POST_TEXT';
 const SET_POSTS = 'SET_POSTS';
 const ADD_POST = 'ADD_POST';
 const SET_FOLLOW_STATUS = 'SET_FOLLOW_STATUS';
+const SET_USER_STATUS = 'SET_USER_STATUS'
 
 let initialState = {
     user: null,
     newPostText: '',
     posts: [],
-    isFollowed: false
+    isFollowed: false,
+    status: null
 }
 
 const profileUserReducer = (state = initialState, action) => {
@@ -80,6 +82,11 @@ const profileUserReducer = (state = initialState, action) => {
                 ...state,
                 isFollowed: action.boolean
             }
+        case SET_USER_STATUS:
+            return {
+                ...state, 
+                status: action.userStatus
+            }
         default:
             return state;
     }
@@ -91,11 +98,15 @@ export const unfollow = (userId) => ({ type: UNFOLLOW, userId });
 export const setNewPostText = (newText) => ({ type: SET_NEW_POST_TEXT, newText });
 export const setPosts = (posts) => ({ type: SET_POSTS, posts });
 export const addPost = (userId) => ({ type: ADD_POST, userId });
-export const setFollowStatus = (boolean) => ({ type: SET_FOLLOW_STATUS, boolean })
+export const setFollowStatus = (boolean) => ({ type: SET_FOLLOW_STATUS, boolean });
+export const setUserStatus = (userStatus) => ({type: SET_USER_STATUS, userStatus}); 
 
 export const getUserProfile = (userId) => (dispatch) => {
     profileAPI.getUserProfile(userId).then(response => {
         dispatch(setUserProfile(response.data));
+    });
+    profileAPI.getUserStatus(userId).then(response => {
+        dispatch(setUserStatus(response.data));
     });
     profileAPI.isFollowed(userId).then(response => {
         dispatch(setFollowStatus(response.data))

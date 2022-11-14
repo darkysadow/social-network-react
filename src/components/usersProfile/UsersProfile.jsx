@@ -59,6 +59,7 @@ const UsersProfile = (props) => {
                             <BlockTitle Classname={s.messagesBar__title} Text={u.fullName} />
                             <div className={s.bio}>
                                 <p>{!u.aboutMe?'':u.aboutMe}</p>
+                                <p>{!props.status?"":props.status}</p>
                             </div>
                             <div className={s.aboutBlock}>
                                 <div className={s.job}>
