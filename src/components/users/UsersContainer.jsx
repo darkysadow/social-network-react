@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import { followUser, getUsers, unfollowUser, toggleIsFetching, nextPage, prevPage } from "../../redux/users-reducer";
 import { checkAuthMe } from "../../redux/auth-reducer";
 import Users from "./Users";
+import { withAuthRedirect } from "../hoc/AuthRedirect";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
-        this.props.checkAuthMe();
         this.props.getUsers(this.props.pageNumber);
     }
     nextPageButton = () => {
@@ -21,14 +21,10 @@ class UsersContainer extends React.Component {
         }
     }
     render() {
-        if (this.props.isAuth==true) {
-            return (
-                <div className="container">
-                    <Users users={this.props.users} pageNumber={this.props.pageNumber} isFetching={this.props.isFetching} totalUsers={this.props.totalUsers} follow={this.props.followUser} unfollow={this.props.unfollowUser} getUsers={this.props.getUsers} toggleIsFetching={this.props.toggleIsFetching} nextPageButton={this.nextPageButton} prevPageButton={this.prevPageButton} />
-                </div>)
-        } else {
-            return (<div className="container">You are not authorised</div>)
-        }
+        return (
+            <div className="container">
+                <Users users={this.props.users} pageNumber={this.props.pageNumber} isFetching={this.props.isFetching} totalUsers={this.props.totalUsers} follow={this.props.followUser} unfollow={this.props.unfollowUser} getUsers={this.props.getUsers} toggleIsFetching={this.props.toggleIsFetching} nextPageButton={this.nextPageButton} prevPageButton={this.prevPageButton} />
+            </div>)
     }
 }
 
@@ -41,5 +37,5 @@ const mapStateToProps = (state) => {
         isAuth: state.auth.isAuthorized
     }
 }
-
-export default connect(mapStateToProps, { checkAuthMe, followUser, unfollowUser, getUsers, toggleIsFetching, nextPage, prevPage })(UsersContainer);
+let authRedirect = withAuthRedirect(UsersContainer);
+export default connect(mapStateToProps, { checkAuthMe, followUser, unfollowUser, getUsers, toggleIsFetching, nextPage, prevPage })(authRedirect);
