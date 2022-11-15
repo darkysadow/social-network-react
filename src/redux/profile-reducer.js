@@ -2,8 +2,6 @@ import { profileAPI, usersAPI } from "../api/apiDAL";
 import { postsData } from "../server-immitator/users-page";
 
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
 const SET_NEW_POST_TEXT = 'SET_NEW_POST_TEXT';
 const SET_POSTS = 'SET_POSTS';
 const ADD_POST = 'ADD_POST';
@@ -93,7 +91,7 @@ export const getUserProfile = (userId) => (dispatch) => {
 
 export const followUserInProfile = (userId) => (dispatch) => {
     usersAPI.follow(userId).then(response => {
-        if(response.data.resultCode == 0) {
+        if(response.data.resultCode === 0) {
             dispatch(setFollowStatus(true));
         }
     })
@@ -101,7 +99,7 @@ export const followUserInProfile = (userId) => (dispatch) => {
 
 export const unfollowUserInProfile = (userId) => (dispatch) => {
     usersAPI.unfollow(userId).then(response => {
-        if(response.data.resultCode == 0) {
+        if(response.data.resultCode === 0) {
             dispatch(setFollowStatus(false));
         }
     })
