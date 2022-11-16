@@ -4,6 +4,7 @@ import { followUser, getUsers, unfollowUser, toggleIsFetching, nextPage, prevPag
 import { checkAuthMe } from "../../redux/auth-reducer";
 import Users from "./Users";
 import { withAuthRedirect } from "../hoc/AuthRedirect";
+import { compose } from "redux";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -37,5 +38,9 @@ const mapStateToProps = (state) => {
         isAuth: state.auth.isAuthorized
     }
 }
-let authRedirect = withAuthRedirect(UsersContainer);
-export default connect(mapStateToProps, { checkAuthMe, followUser, unfollowUser, getUsers, toggleIsFetching, nextPage, prevPage })(authRedirect);
+//let authRedirect = withAuthRedirect(UsersContainer);
+//export default connect(mapStateToProps, { checkAuthMe, followUser, unfollowUser, getUsers, toggleIsFetching, nextPage, prevPage })(authRedirect);
+export default compose(
+    connect(mapStateToProps, { checkAuthMe, followUser, unfollowUser, getUsers, toggleIsFetching, nextPage, prevPage }),
+    withAuthRedirect,
+)(UsersContainer)

@@ -1,3 +1,37 @@
 index.js {
     Provider component getting store 
 }
+
+App.js {
+    BrowserRouter {
+        Header {
+            Navbar {
+                3 NavLinks
+                <NavLink to='/home' className={({isActive}) => (isActive ? s.selected : 'none')}>Home</NavLink>
+                <NavLink to='/messages' className={({isActive}) => (isActive ? s.selected : 'none')}>Messages</NavLink>
+                <NavLink to="/users" className={({isActive}) => (isActive ? s.selected : 'none')}>Users</NavLink>
+            }
+        }
+        Body {
+            Routes {
+                5 Route:
+                    Home
+                    Messages
+                    UserContainer {
+                        Users {
+                            <NavLink to={"/profile/" + u.id}>{u.name}</NavLink>
+                        }
+                    }
+                    UsersProfileContainer {
+                        UsersProfile {
+                            <NavLink to={'/profile/' + u.id}>Профіль</NavLink>
+                            <NavLink to={'/profile/' + u.id}>Фотографії</NavLink>
+                            <NavLink to={'/profile/' + u.id}>Друзі</NavLink>
+                            <NavLink to={'/profile/' + u.id}>Про мене</NavLink>
+                        }
+                    }
+                    Login
+            }
+        }
+    }
+}
