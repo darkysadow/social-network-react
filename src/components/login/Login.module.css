@@ -1,0 +1,50 @@
+.formContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+} 
+
+.inputsContainer {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.inputLogin input,
+.inputPassword input {
+    width: 100%;
+    height: 40px;
+    padding: 0 15px;
+    letter-spacing: 1.5px;
+}
+
+.inputPassword input {
+    margin: 50px 0 0 0;
+}
+
+.inputLogin input {   
+}
+
+.buttonsContainer {
+    margin: 50px 0 0 0  ;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.buttonLogin {
+
+}
+
+.buttonRegister {
+
+}
+
+.buttonLogin button,
+.buttonRegister button {
+    padding: 10px 15px;
+    border-radius: 0px  ;
+}

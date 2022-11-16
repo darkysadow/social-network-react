@@ -1,0 +1,3 @@
+index.js {
+    Provider component getting store 
+}
