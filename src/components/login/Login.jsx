@@ -6,6 +6,7 @@ class Login extends React.Component {
     render() {
         return (<div className="container">
             <div className={s.formContainer}>
+                <div className={s.label}><p>You are not logged in</p></div>
                 <div className={s.inputsContainer}>
                     <div className={s.inputLogin}><input type="text" placeholder="Login"/></div>
                     <div className={s.inputPassword}><input type="password" placeholder="Password"/></div>
