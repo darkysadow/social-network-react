@@ -11,8 +11,12 @@
     margin: 0 0 40px 0;
 }
 
+.label p {
+    text-align: center;
+}
+
 .inputsContainer {
-    width: 200px;
+    width: 250px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,10 +31,25 @@
 }
 
 .inputPassword input {
-    margin: 50px 0 0 0;
+    margin: 20px 0 0 0;
 }
 
 .inputLogin input {   
+}
+
+.checkboxRemember {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0 0 0;
+}
+
+.checkboxRemember input {
+    width: 18px;
+    height: 18px;
+    margin: 0 15px 0 0;
 }
 
 .buttonsContainer {
