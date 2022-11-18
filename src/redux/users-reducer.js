@@ -40,8 +40,7 @@ let usersReducer = (state = initialState, action) => {
         case SET_USERS:
             return {
                 ...state,
-                //users: [...state.users, ...action.users]
-                users: [...action.users] //не додаю юзерів до списку, а перетираю
+                users: [...action.users]
             }
         case TOGGLE_IS_FETCHING:
             return {
@@ -77,7 +76,6 @@ export const getUsers = (pageNumber) => (dispatch) => {
     usersAPI.getUsers(pageNumber).then(data => {
         dispatch(toggleIsFetching(false));
         dispatch(setUsers(data.data.items));
-        console.log(data.data.totalCount);
         dispatch(totalUsers(data.data.totalCount));
     })
 }
@@ -97,6 +95,5 @@ export const unfollowUser = (userId) => (dispatch) => {
         }
     })
 }
-
 
 export default usersReducer;

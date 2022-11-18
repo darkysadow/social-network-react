@@ -1,7 +1,7 @@
 import React from "react";
 import UsersProfile from "./UsersProfile";
 import { connect } from 'react-redux';
-import { getUserProfile, followUserInProfile, unfollowUserInProfile, unfollow, setNewPostText, setPosts, addPost} from "../../redux/profile-reducer";
+import { getUserProfile, followUserInProfile, unfollowUserInProfile, setNewPostText, setPosts, addPost} from "../../redux/profile-reducer";
 import { useParams } from "react-router-dom";
 import Preloader from './../common/Preloader.jsx'
 import { compose } from "redux";
@@ -15,21 +15,10 @@ class UsersProfileContainer extends React.Component {
             this.props.getUserProfile(this.props.router.params.id)
         }
         if (prevProps.userInfo !== this.props.userInfo) {
-            console.log(this.props.userInfo)
         }
     }
     render() {
-        /*
-          "facebook": null,
-    "website": null,
-    "vk": null,
-    "twitter": null,
-    "instagram": null,
-    "youtube": null,
-    "github": null,
-    "mainLink": null
-        */
-        if (!this.props.userInfo/*обов'язково в стейті має бути null перед тим як туди прийде респонс з бд*/) {
+        if (!this.props.userInfo) {
             return <Preloader />;
         } else {
             let u = this.props.userInfo;
@@ -65,10 +54,7 @@ let mapStateToProps = (state) => {
 
 }
 
-
 export default compose(
     connect(mapStateToProps, { getUserProfile, followUserInProfile, unfollowUserInProfile, setNewPostText, setPosts, addPost}),
     withRouter
 )(UsersProfileContainer);
-
-//export default connect(mapStateToProps, { getUserProfile, followUserInProfile, unfollowUserInProfile, setNewPostText, setPosts, addPost})(withRouter(UsersProfileContainer));

@@ -26,7 +26,7 @@ const Users = (props) => {
                                     <img src={!u.photos.small ? defaultAvatar : u.photos.small} alt={u.name} />
                                 </div>
                                 <div className={s.followButton}>
-                                    {u.id!=props.loggedUserId?(u.followed ? <button className={s.followed} onClick={() => { props.unfollow(u.id) }}><p>підписки</p></button> : <button className={s.unfollowed} onClick={() => { props.follow(u.id) }}>Підписатися</button>):<div className={s.emptyButton}>Ваш профіль</div>}
+                                    {u.id!==props.loggedUserId?(u.followed ? <button className={s.followed} onClick={() => { props.unfollow(u.id) }}><p>підписки</p></button> : <button className={s.unfollowed} onClick={() => { props.follow(u.id) }}>Підписатися</button>):<div className={s.emptyButton}>Ваш профіль</div>}
                                 </div>
                             </div>
                             <div className={s.center}>
@@ -52,10 +52,7 @@ const Users = (props) => {
                             <button onClick={props.prevPageButton} disabled={true}>← Попередня</button>
                         </div>}
                         <div className={s.navInput}>
-                            {
-                                //<input type="number" value={props.pageNumber}/>
-                            }
-                            <p>{props.pageNumber} / {props.totalUsers%10==0?props.totalUsers/10:Math.round(props.totalUsers/10)}</p>
+                            <p>{props.pageNumber} / {props.totalUsers%10===0?props.totalUsers/10:Math.round(props.totalUsers/10)}</p>
                         </div>
                         {props.isFetching ? <div className={s.navButtonNext + " " + s.disabledButton}>
                             <button onClick={props.nextPageButton} disabled={true}>Наступна →</button>

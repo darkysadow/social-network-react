@@ -4,12 +4,10 @@ import s from "./UsersProfile.module.css";
 import BlockTitle from "./../block-styles/BlockTitle";
 import { NavLink } from "react-router-dom";
 import jobIcon from "./../../img/svg/job.svg";
-import locIcon from "./../../img/svg/loc.svg";
-import ageIcon from "./../../img/svg/age.svg";
 import LikeList from "../home/left/like/LikeList";
 import Notifications from "../home/right/notifications/Notifications";
 import FriendsZone from "../home/right/friends/FriendsZone";
-import { toggleSubcribeToUserOnDB } from "../../api/api";
+
 
 const UsersProfile = (props) => {
     let u = props.userInfo;
@@ -49,9 +47,9 @@ const UsersProfile = (props) => {
             default: return 'https://png.pngitem.com/pimgs/s/30-307318_camera-circle-youtube-icon-black-hd-png-download.png';
         }
     }
-    
+
     let defaultAvatar = 'https://png.pngitem.com/pimgs/s/30-307318_camera-circle-youtube-icon-black-hd-png-download.png';
-    
+
 
     let onPostTextChange = (e) => {
         props.setNewPostText(e.target.value);
@@ -144,7 +142,7 @@ const UsersProfile = (props) => {
                                     </div>
                                     <div className={s.whoAndWhen}>
                                         <div className={s.who}>
-                                            <a>{`${props.getUserProfile(post.postOwner).firstname} ${props.getUserProfile(post.postOwner).surname}`}</a>
+                                            <p>{`${props.getUserProfile(post.postOwner).firstname} ${props.getUserProfile(post.postOwner).surname}`}</p>
                                         </div>
                                         <div className={s.when}>
                                             <p>{post.dateOfPost.toString()}</p>
@@ -171,6 +169,5 @@ const UsersProfile = (props) => {
         </div>
     );
 }
-
 
 export default UsersProfile;

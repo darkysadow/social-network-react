@@ -1,34 +1,11 @@
 import React from "react";
 import s from './../Header.module.css';
 import lupa from './../../../img/za.png';
-import face from './../../../img/face.jpg';
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { checkAuthMe } from "../../../redux/auth-reducer";
 import { logoutUser } from "../../../redux/auth-reducer";
-import { Navigate, NavLink } from "react-router-dom";
-
-{/*const UserSearch = () => {
-    return (
-        <div className={s.userSearch}>
-            <div className={s.form}>
-                <div className={s.form_search}>
-                    <input type="text" placeholder='Search...' />
-                </div>
-                <div className={s.form_button}>
-                    <input type="image" src={lupa} width='20px' height='20px' />
-                </div>
-            </div>
-            <div className={s.profile}>
-                <div className={s.profile_image}>
-                    <img src={face} alt="" width="30px" height="30px" />
-                </div>
-            </div>
-        </div>
-    );
-}
-
-export default UserSearch;*/}
+import { NavLink } from "react-router-dom";
 
 class UserSearch extends React.Component {
     state = {
@@ -38,7 +15,6 @@ class UserSearch extends React.Component {
     componentDidMount() {
         this.props.checkAuthMe();
     }
-
     showUserBar = () => {
         if(this.state.dropDownOpened) {
             this.setState({
@@ -50,7 +26,6 @@ class UserSearch extends React.Component {
         })
     }
     }
-
     render() {
         if (!this.props.isAuth) {
             return (<div className={s.userSearch}>
@@ -64,7 +39,7 @@ class UserSearch extends React.Component {
                             <input type="text" placeholder='Search...' />
                         </div>
                         <div className={s.form_button}>
-                            <input type="image" src={lupa} width='20px' height='20px' />
+                            <input type="image" alt="Search" src={lupa} width='20px' height='20px' />
                         </div>
                     </div>
                     <div className={s.profile} onClick={this.showUserBar}>

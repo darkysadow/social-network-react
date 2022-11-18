@@ -28,7 +28,6 @@ class Login extends React.Component {
                             <div className={s.label}><p>You are not logged in</p></div>
                             <div className={s.inputsContainer}>
                                 <div className={s.inputLogin}>
-                                    {/*<input type="text" placeholder="Login"/>*/}
                                     <Field 
                                         name="loginInputLogin" 
                                         component={Input}
@@ -38,7 +37,6 @@ class Login extends React.Component {
                                     />
                                 </div>
                                 <div className={s.inputPassword}>
-                                    {/*<input type="password" placeholder="Password"/>*/}
                                     <Field 
                                         name="passwordInputLogin" 
                                         component={Input}
@@ -84,61 +82,3 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, { loginUser, checkAuthMe })(Login);
-
-/*const onSubmit = (values) => {
-    console.log(values)
-    alert(values.loginInput)
-}
-
-const LoginForm = (props) => {
-    return (
-        <div className="container">
-            <div className={s.formContainer}>
-                <Form onSubmit={onSubmit}>
-                    {props => (
-                        <form onSubmit={props.handleSubmit}>
-                            <div className={s.label}><p>You are not logged in</p></div>
-                            <div className={s.inputsContainer}>
-                                <div className={s.inputLogin}>
-                                    
-                                    <Field 
-                                        name="loginInputLogin" 
-                                        component='input'
-                                        type="email"
-                                        placeholder='Email'
-                                    />
-                                </div>
-                                <div className={s.inputPassword}>
-                                    
-                                    <Field 
-                                        name="passwordInputLogin" 
-                                        component='input'
-                                        type="password"
-                                        placeholder='Password'
-                                    />
-                                </div>
-                                <div className={s.checkboxRemember}>
-                                    <Field 
-                                        name="checkboxLogin"
-                                        component="input"
-                                        type="checkbox"
-                                    />
-                                    <p>Запам'ятати мене</p>
-                                </div>
-                                <div className={s.buttonsContainer}>
-                                    <div className={s.buttonLogin}>
-                                        <button type="submit">login</button>
-                                    </div>
-                                    <div className={s.buttonRegister}>
-                                        <button>register</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    )}
-
-                </Form>
-            </div>
-        </div>
-    )
-}*/

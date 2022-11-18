@@ -39,8 +39,6 @@ const mapStateToProps = (state) => {
         loggedUserId: state.auth.userId
     }
 }
-//let authRedirect = withAuthRedirect(UsersContainer);
-//export default connect(mapStateToProps, { checkAuthMe, followUser, unfollowUser, getUsers, toggleIsFetching, nextPage, prevPage })(authRedirect);
 export default compose(
     connect(mapStateToProps, { checkAuthMe, followUser, unfollowUser, getUsers, toggleIsFetching, nextPage, prevPage }),
     withAuthRedirect,
