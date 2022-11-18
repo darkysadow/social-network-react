@@ -2,12 +2,14 @@ import React from "react";
 import { Field, Form } from "react-final-form";
 import { connect } from "react-redux";
 import s from "./Login.module.css";
-import { loginUser } from "../../redux/auth-reducer";
-import Preloader from "../common/Preloader";
+import { loginUser, checkAuthMe } from "../../redux/auth-reducer";
 import { Navigate } from "react-router-dom";
 
 class Login extends React.Component {
     componentDidMount(){
+    }
+    componentWillUnmount(){
+        this.props.checkAuthMe();
     }
     onSubmit = (values) => {
         this.props.loginUser(values.loginInputLogin, values.passwordInputLogin, values.checkboxLogin);
@@ -76,7 +78,7 @@ const mapStateToProps = (state) => ({
     email: state.auth.email
 })
 
-export default connect(mapStateToProps, { loginUser })(Login);
+export default connect(mapStateToProps, { loginUser, checkAuthMe })(Login);
 
 /*const onSubmit = (values) => {
     console.log(values)

@@ -5,7 +5,8 @@ import face from './../../../img/face.jpg';
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { checkAuthMe } from "../../../redux/auth-reducer";
-import { NavLink } from "react-router-dom";
+import { logoutUser } from "../../../redux/auth-reducer";
+import { Navigate, NavLink } from "react-router-dom";
 
 {/*const UserSearch = () => {
     return (
@@ -30,8 +31,23 @@ import { NavLink } from "react-router-dom";
 export default UserSearch;*/}
 
 class UserSearch extends React.Component {
+    state = {
+        dropDownOpened: false
+    }
     componentDidMount() {
         this.props.checkAuthMe();
+    }
+
+    showUserBar = () => {
+        if(this.state.dropDownOpened) {
+            this.setState({
+                dropDownOpened: false
+            })
+        } else {
+        this.setState({
+            dropDownOpened: true
+        })
+    }
     }
 
     render() {
@@ -50,11 +66,24 @@ class UserSearch extends React.Component {
                             <input type="image" src={lupa} width='20px' height='20px' />
                         </div>
                     </div>
-                    <div className={s.profile}>
-                        <div className={s.profile_image}>
+                    <div className={s.profile} onClick={this.showUserBar}>
+                        <div className={s.profile_image} >
                             <img src={face} alt="" width="30px" height="30px" />
                         </div>
                     </div>
+                {!this.state.dropDownOpened?"":
+                <div className={s.dropDown}>
+                    <div className={s.userNickname}>
+                        <p>{this.props.login}</p>
+                    </div>
+                    <ul className={s.dropDownItemList}>
+                        <li onClick={() => {
+                            this.props.logoutUser();
+                            this.showUserBar();  
+                            }}>Log Out</li>
+                    </ul>
+                </div>
+                }
                 </div>
             )
         }
@@ -63,9 +92,10 @@ class UserSearch extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        isAuth: state.auth.isAuthorized
+        isAuth: state.auth.isAuthorized,
+        login: state.auth.login
     }
 }
 export default compose(
-    connect(mapStateToProps, { checkAuthMe })
+    connect(mapStateToProps, { checkAuthMe , logoutUser})
 )(UserSearch)

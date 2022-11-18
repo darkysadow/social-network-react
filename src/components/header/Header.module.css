@@ -86,3 +86,49 @@
 .selected {
     color: #3272ad;
 }
+
+.dropDown {
+    position: fixed;
+    top: 55px;
+    right: inherit;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    border: 1px solid rgba(0, 0, 0, 0.1) ;
+    border-radius: 10px;
+    border-top-right-radius: 0px;
+}
+
+.dropDown::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    right: 10%;
+    width: 6px;
+    height: 6px;
+    background-color: #FFFFFF;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    transform: rotate(-45deg);
+}
+
+.userNickname {
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
+.dropDownItemList {
+    list-style-type: none;
+}
+
+.dropDownItemList li {
+    line-height: 24px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.dropDownItemList li:hover {
+    background-color: rgba(64, 64, 64, 0.1);
+}

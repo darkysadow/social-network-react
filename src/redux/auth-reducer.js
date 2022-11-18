@@ -2,7 +2,6 @@ import { authAPI } from "../api/apiDAL";
 
 const AUTH_STATUS = 'AUTH_STATUS';
 const GET_USER_DATA = 'GET_USER_DATA';
-const LOGIN = 'LOGIN';
 
 let initialState = {
     isAuthorized: null,
@@ -31,22 +30,32 @@ const getUserData = (userId, email, login) => ({ type: GET_USER_DATA, userId, em
 
 export const checkAuthMe = () => (dispatch) => {
     authAPI.me().then(response => {
-        if(response.data.resultCode == 1) {
+        if(response.data.resultCode === 1) {
             dispatch(changeAuthStatus(false));
-        } else if (response.data.resultCode == 0) {
+        } else if (response.data.resultCode === 0) {
+            
+            dispatch(getUserData(response.data.data.id, response.data.data.email, response.data.data.login));
             dispatch(changeAuthStatus(true));
-            dispatch(getUserData(response.data.data.id, response.data.data.email, response.data.data.login))
         }
     })
 }
 
 export const loginUser = (login, password, rememberMe) => (dispatch) => {
     authAPI.login(login, password, rememberMe).then(response => {
-        if(response.data.resultCode == 1) {
+        if(response.data.resultCode === 1) {
             dispatch(changeAuthStatus(false));
-        } else if (response.data.resultCode == 0) {
+        } else if (response.data.resultCode === 0) {
             dispatch(changeAuthStatus(true))
         }
+    });
+}
+
+export const logoutUser = () => (dispatch) => {
+    authAPI.logout().then(response => {
+        if(response.data.resultCode === 0) {
+            dispatch(changeAuthStatus(false));
+            dispatch(getUserData(null, null, null))
+        } 
     })
 }
 
