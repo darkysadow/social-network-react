@@ -46,9 +46,10 @@ export const checkAuthMe = () => (dispatch) => {
             dispatch(changeAuthStatus(true));
         }
     }).then(() => {
+        if(authUserId) {
         profileAPI.getUserProfile(authUserId).then(secondResponse => {
             dispatch(setUserAvatar(secondResponse.data.photos.large));
-        })
+        })}
 })
 }
 
