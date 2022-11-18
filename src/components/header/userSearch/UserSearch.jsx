@@ -34,6 +34,7 @@ class UserSearch extends React.Component {
     state = {
         dropDownOpened: false
     }
+    defaultAvatar = 'https://png.pngitem.com/pimgs/s/30-307318_camera-circle-youtube-icon-black-hd-png-download.png'
     componentDidMount() {
         this.props.checkAuthMe();
     }
@@ -68,7 +69,7 @@ class UserSearch extends React.Component {
                     </div>
                     <div className={s.profile} onClick={this.showUserBar}>
                         <div className={s.profile_image} >
-                            <img src={face} alt="" width="30px" height="30px" />
+                            <img src={!this.props.avatar?this.defaultAvatar:this.props.avatar} alt="" width="30px" height="30px" />
                         </div>
                     </div>
                 {!this.state.dropDownOpened?"":
@@ -93,7 +94,8 @@ class UserSearch extends React.Component {
 let mapStateToProps = (state) => {
     return {
         isAuth: state.auth.isAuthorized,
-        login: state.auth.login
+        login: state.auth.login,
+        avatar: state.auth.avatar
     }
 }
 export default compose(

@@ -17,7 +17,7 @@ const UsersProfile = (props) => {
     let setBackground = (lastNum) => {
         switch (lastNum) {
             case '1': {
-                return 'https://png.pngitem.com/pimgs/s/30-307318_camera-circle-youtube-icon-black-hd-png-download.png';
+                return 'https://c4.wallpaperflare.com/wallpaper/586/603/742/minimalism-4k-for-mac-desktop-wallpaper-preview.jpg';
             }
             case '2': {
                 return 'https://images.template.net/wp-content/uploads/2014/09/Desktop-Background-16-Copy.jpg';
