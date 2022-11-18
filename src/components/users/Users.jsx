@@ -26,7 +26,7 @@ const Users = (props) => {
                                     <img src={!u.photos.small ? defaultAvatar : u.photos.small} alt={u.name} />
                                 </div>
                                 <div className={s.followButton}>
-                                    {u.followed ? <button className={s.followed} onClick={() => { props.unfollow(u.id) }}><p>підписки</p></button> : <button className={s.unfollowed} onClick={() => { props.follow(u.id) }}>Підписатися</button>}
+                                    {u.id!=props.loggedUserId?(u.followed ? <button className={s.followed} onClick={() => { props.unfollow(u.id) }}><p>підписки</p></button> : <button className={s.unfollowed} onClick={() => { props.follow(u.id) }}>Підписатися</button>):<div className={s.emptyButton}>Ваш профіль</div>}
                                 </div>
                             </div>
                             <div className={s.center}>

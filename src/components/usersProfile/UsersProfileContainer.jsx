@@ -33,7 +33,7 @@ class UsersProfileContainer extends React.Component {
             return <Preloader />;
         } else {
             let u = this.props.userInfo;
-            return (<UsersProfile posts={this.props.posts} userInfo={u} follow={this.props.followUserInProfile} unfollow={this.props.unfollowUserInProfile} setNewPostText={this.props.setNewPostText} setPosts={this.props.posts} addPost={this.props.addPost} isFollowed={this.props.isFollowed} status={this.props.status}/>)
+            return (<UsersProfile loggedUserId={this.props.loggedUserId} posts={this.props.posts} userInfo={u} follow={this.props.followUserInProfile} unfollow={this.props.unfollowUserInProfile} setNewPostText={this.props.setNewPostText} setPosts={this.props.posts} addPost={this.props.addPost} isFollowed={this.props.isFollowed} status={this.props.status}/>)
         }
     }
 }
@@ -59,7 +59,8 @@ let mapStateToProps = (state) => {
         newPostText: state.profileUserPage.newPostText,
         posts: state.profileUserPage.posts,
         isFollowed: state.profileUserPage.isFollowed,
-        status: state.profileUserPage.status
+        status: state.profileUserPage.status,
+        loggedUserId: state.auth.userId
     }
 
 }

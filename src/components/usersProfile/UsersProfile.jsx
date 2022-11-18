@@ -40,7 +40,7 @@ const UsersProfile = (props) => {
                         <li><NavLink to={'/profile/' + u.id}>Про мене</NavLink></li>
                         <li>
                             <div className={s.followButton}>
-                                {props.isFollowed ? <button className={s.followed} onClick={unfollow}><p>підписки</p></button> : <button className={s.unfollowed} onClick={follow}>Підписатися</button>}
+                                {u.userId!==props.loggedUserId?(props.isFollowed ? <button className={s.followed} onClick={unfollow}><p>підписки</p></button> : <button className={s.unfollowed} onClick={follow}>Підписатися</button>):''}
                             </div>
                         </li>
                     </ul>

@@ -24,7 +24,7 @@ class UsersContainer extends React.Component {
     render() {
         return (
             <div className="container">
-                <Users users={this.props.users} pageNumber={this.props.pageNumber} isFetching={this.props.isFetching} totalUsers={this.props.totalUsers} follow={this.props.followUser} unfollow={this.props.unfollowUser} getUsers={this.props.getUsers} toggleIsFetching={this.props.toggleIsFetching} nextPageButton={this.nextPageButton} prevPageButton={this.prevPageButton} />
+                <Users loggedUserId={this.props.loggedUserId} users={this.props.users} pageNumber={this.props.pageNumber} isFetching={this.props.isFetching} totalUsers={this.props.totalUsers} follow={this.props.followUser} unfollow={this.props.unfollowUser} getUsers={this.props.getUsers} toggleIsFetching={this.props.toggleIsFetching} nextPageButton={this.nextPageButton} prevPageButton={this.prevPageButton} />
             </div>)
     }
 }
@@ -35,7 +35,8 @@ const mapStateToProps = (state) => {
         isFetching: state.usersPage.isFetching,
         pageNumber: state.usersPage.pageNumber,
         totalUsers: state.usersPage.totalUsers,
-        isAuth: state.auth.isAuthorized
+        isAuth: state.auth.isAuthorized,
+        loggedUserId: state.auth.userId
     }
 }
 //let authRedirect = withAuthRedirect(UsersContainer);

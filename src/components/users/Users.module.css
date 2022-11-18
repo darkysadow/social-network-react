@@ -136,7 +136,14 @@
     background-color: gray;
     opacity: 0.1;
 }
-
+.emptyButton {
+    width: 110px;
+    text-align: center;
+    padding: 10px 0 15px 0;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 500;
+    height: 20px;
+}
 .navButtonNext {
-
+    
 }
