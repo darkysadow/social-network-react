@@ -4,8 +4,11 @@ import { connect } from "react-redux";
 import s from "./Login.module.css";
 import { loginUser, checkAuthMe } from "../../redux/auth-reducer";
 import { Navigate } from "react-router-dom";
+import { Input } from "../../utillites/FormValidators/FormControls";
+import { composeValidators, maxLengthCreator, required } from "../../utillites/FormValidators/validators";
 
 class Login extends React.Component {
+    maxLength254 = maxLengthCreator(254)
     componentDidMount(){
     }
     componentWillUnmount(){
@@ -28,18 +31,20 @@ class Login extends React.Component {
                                     {/*<input type="text" placeholder="Login"/>*/}
                                     <Field 
                                         name="loginInputLogin" 
-                                        component='input'
+                                        component={Input}
                                         type="email"
                                         placeholder='Email'
+                                        validate={composeValidators(required, this.maxLength254)}
                                     />
                                 </div>
                                 <div className={s.inputPassword}>
                                     {/*<input type="password" placeholder="Password"/>*/}
                                     <Field 
                                         name="passwordInputLogin" 
-                                        component='input'
+                                        component={Input}
                                         type="password"
                                         placeholder='Password'
+                                        validate={required}
                                     />
                                 </div>
                                 <div className={s.checkboxRemember}>
