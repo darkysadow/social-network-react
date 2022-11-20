@@ -72,3 +72,10 @@
     padding: 10px 15px;
     border-radius: 0px  ;
 }
+
+.submitError {
+    width: 100%;
+    text-align: center;
+    padding: 15px 0 0 0;
+    color: #FD6161;
+}

@@ -3,13 +3,15 @@ import { authAPI, profileAPI } from "../api/apiDAL";
 const AUTH_STATUS = 'AUTH_STATUS';
 const GET_USER_DATA = 'GET_USER_DATA';
 const SET_USER_AVATAR = 'SET_USER_AVATAR';
+const ADD_ERROR_TO_STATE = 'ADD_ERROR_TO_STATE';
 
 let initialState = {
     isAuthorized: null,
     userId: null,
     email: null,
     login: null,
-    avatar: null
+    avatar: null,
+    errorMessages: null
 }
 
 let authReducer = (state = initialState, action) => {
@@ -26,6 +28,10 @@ let authReducer = (state = initialState, action) => {
             return {
                 ...state, avatar: action.avatar
             }
+        case ADD_ERROR_TO_STATE: 
+            return {
+                ...state, errorMessages: action.error
+            }
         default:
             return state;
     }
@@ -34,6 +40,7 @@ let authReducer = (state = initialState, action) => {
 export const changeAuthStatus = (authStatus) => ({ type: AUTH_STATUS, authStatus });
 const getUserData = (userId, email, login) => ({ type: GET_USER_DATA, userId, email, login});
 const setUserAvatar = (avatar) => ({type: SET_USER_AVATAR, avatar});
+const addError = (error) => ({type: ADD_ERROR_TO_STATE, error});
 
 export const checkAuthMe = () => (dispatch) => {
     let authUserId;
@@ -55,10 +62,19 @@ export const checkAuthMe = () => (dispatch) => {
 
 export const loginUser = (login, password, rememberMe) => (dispatch) => {
     authAPI.login(login, password, rememberMe).then(response => {
-        if(response.data.resultCode === 1) {
+        /*if(response.data.resultCode === 1) {
             dispatch(changeAuthStatus(false));
+            console.log(response.data);
+            dispatch(addError(response.messages));
         } else if (response.data.resultCode === 0) {
             dispatch(changeAuthStatus(true))
+        }*/
+        if (response.data.resultCode === 0) {
+            dispatch(changeAuthStatus(true));
+            dispatch(addError(null));
+        } else {
+            dispatch(changeAuthStatus(false));
+            dispatch(addError(response.data.messages));
         }
     });
 }

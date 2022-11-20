@@ -6,6 +6,7 @@ import { loginUser, checkAuthMe } from "../../redux/auth-reducer";
 import { Navigate } from "react-router-dom";
 import { Input } from "../../utillites/FormValidators/FormControls";
 import { composeValidators, maxLengthCreator, required } from "../../utillites/FormValidators/validators";
+import { FORM_ERROR } from "final-form";
 
 class Login extends React.Component {
     maxLength254 = maxLengthCreator(254)
@@ -16,6 +17,9 @@ class Login extends React.Component {
     }
     onSubmit = (values) => {
         this.props.loginUser(values.loginInputLogin, values.passwordInputLogin, values.checkboxLogin);
+        if(this.props.errorMessages) {
+            return { [FORM_ERROR]: this.props.errorMessages[0]}
+        }
     }
     render() {
         if(!this.props.isAuth){
@@ -53,6 +57,7 @@ class Login extends React.Component {
                                     />
                                     <p>Запам'ятати мене</p>
                                 </div>
+                                {props.submitError && <div className={s.submitError}>{props.submitError}</div>}
                                 <div className={s.buttonsContainer}>
                                     <div className={s.buttonLogin}>
                                         <button type="submit">login</button>
@@ -78,7 +83,8 @@ const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuthorized,
     userId: state.auth.userId,
     login: state.auth.login,
-    email: state.auth.email
+    email: state.auth.email,
+    errorMessages: state.auth.errorMessages
 })
 
 export default connect(mapStateToProps, { loginUser, checkAuthMe })(Login);
