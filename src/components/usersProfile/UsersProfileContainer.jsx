@@ -1,20 +1,32 @@
 import React from "react";
 import UsersProfile from "./UsersProfile";
 import { connect } from 'react-redux';
+import { checkAuthMe } from "../../redux/auth-reducer";
 import { getUserProfile, followUserInProfile, unfollowUserInProfile, setNewPostText, setPosts, addPost} from "../../redux/profile-reducer";
 import { useParams } from "react-router-dom";
 import Preloader from './../common/Preloader.jsx'
 import { compose } from "redux";
 
+
 class UsersProfileContainer extends React.Component {
     componentDidMount() {
-        this.props.getUserProfile(this.props.router.params.id);
+        if(!this.props.router.params.id) {
+            console.log(this.props.loggedUserId)
+            if(!this.props.loggedUserId && !this.props.isAuth) {
+            } else {
+                this.props.getUserProfile(this.props.loggedUserId)
+            }
+            
+        } else {
+            this.props.getUserProfile(this.props.router.params.id);
+        }
     }
     componentDidUpdate(prevProps) {
         if (prevProps.router.params.id !== this.props.router.params.id) {
             this.props.getUserProfile(this.props.router.params.id)
         }
-        if (prevProps.userInfo !== this.props.userInfo) {
+        if (!this.props.router.params.id && (prevProps.loggedUserId !== this.props.loggedUserId)) {
+            this.props.getUserProfile(this.props.loggedUserId)
         }
     }
     render() {
@@ -49,12 +61,14 @@ let mapStateToProps = (state) => {
         posts: state.profileUserPage.posts,
         isFollowed: state.profileUserPage.isFollowed,
         status: state.profileUserPage.status,
-        loggedUserId: state.auth.userId
+        isAuth: state.auth.isAuth,
+        loggedUserId: state.auth.userId,
     }
 
 }
 
 export default compose(
-    connect(mapStateToProps, { getUserProfile, followUserInProfile, unfollowUserInProfile, setNewPostText, setPosts, addPost}),
-    withRouter
+    connect(mapStateToProps, { checkAuthMe, getUserProfile, followUserInProfile, unfollowUserInProfile, setNewPostText, setPosts, addPost}),
+    withRouter,
+    //withAuthRedirect
 )(UsersProfileContainer);

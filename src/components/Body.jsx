@@ -15,6 +15,7 @@ const Body = (props) => {
                     <Route path="/*" element={<Messages />} />
                     <Route path='/users' element={<UsersContainer/>} />
                     <Route path='/profile/:id' element={<UsersProfileContainer />} />
+                    <Route path='/profile/' element={<UsersProfileContainer />} />
                     <Route path='/login' element={<Login />} />
                 </Routes>
         </main>
