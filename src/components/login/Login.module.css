@@ -28,6 +28,13 @@
     height: 40px;
     padding: 0 15px;
     letter-spacing: 1.5px;
+    background-color: #cfe0e0;
+}
+
+.inputLogin input:focus,
+.inputPassword input:focus {
+    background-color: #eaffff;
+    border-bottom: 1px solid black;
 }
 
 .inputPassword input {
