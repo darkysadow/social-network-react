@@ -44,7 +44,7 @@ const addError = (error) => ({type: ADD_ERROR_TO_STATE, error});
 
 export const checkAuthMe = () => (dispatch) => {
     let authUserId;
-    authAPI.me().then(response => {
+    return authAPI.me().then(response => {
         if(response.data.resultCode === 1) {
             dispatch(changeAuthStatus(false));
         } else if (response.data.resultCode === 0) {

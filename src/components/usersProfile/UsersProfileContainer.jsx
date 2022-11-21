@@ -3,7 +3,7 @@ import UsersProfile from "./UsersProfile";
 import { connect } from 'react-redux';
 import { checkAuthMe } from "../../redux/auth-reducer";
 import { getUserProfile, followUserInProfile, unfollowUserInProfile, setNewPostText, setPosts, addPost} from "../../redux/profile-reducer";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import Preloader from './../common/Preloader.jsx'
 import { compose } from "redux";
 
@@ -31,7 +31,11 @@ class UsersProfileContainer extends React.Component {
     }
     render() {
         if (!this.props.userInfo) {
-            return <Preloader />;
+            if(!this.props.loggedUserId && !this.props.isAuth) {
+                return <Navigate to={'/login'} />
+            } else {
+                return <Preloader />;
+            }
         } else {
             let u = this.props.userInfo;
             return (<UsersProfile loggedUserId={this.props.loggedUserId} posts={this.props.posts} userInfo={u} follow={this.props.followUserInProfile} unfollow={this.props.unfollowUserInProfile} setNewPostText={this.props.setNewPostText} setPosts={this.props.posts} addPost={this.props.addPost} isFollowed={this.props.isFollowed} status={this.props.status}/>)

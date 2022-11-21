@@ -1,6 +1,7 @@
 import { applyMiddleware } from "redux";
 import { combineReducers, legacy_createStore as createStore } from "redux";
 import thunk from "redux-thunk";
+import appReducer from "./app-reducer";
 import authReducer from "./auth-reducer";
 import homeReducer from "./home-reducer";
 import messagesReducer from "./messages-reducer";
@@ -12,7 +13,8 @@ let reducers = combineReducers({
     messagesPage: messagesReducer,
     usersPage: usersReducer,
     profileUserPage: profileUserReducer,
-    auth: authReducer
+    auth: authReducer,
+    app: appReducer
 });
 
 let store = createStore(reducers, applyMiddleware(thunk));
