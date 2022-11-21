@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { checkAuthMe } from "../../redux/auth-reducer";
 import { getUserProfile, followUserInProfile, unfollowUserInProfile, setNewPostText, setPosts, addPost} from "../../redux/profile-reducer";
 import { Navigate, useParams } from "react-router-dom";
-import Preloader from './../common/Preloader.jsx'
+import MainPreloader from './../common/MainPreloader.jsx'
 import { compose } from "redux";
 
 
@@ -34,7 +34,7 @@ class UsersProfileContainer extends React.Component {
             if(!this.props.loggedUserId && !this.props.isAuth) {
                 return <Navigate to={'/login'} />
             } else {
-                return <Preloader />;
+                return <MainPreloader />;
             }
         } else {
             let u = this.props.userInfo;
