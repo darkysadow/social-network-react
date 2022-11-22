@@ -5,6 +5,8 @@ import { checkAuthMe } from "../../redux/auth-reducer";
 import Users from "./Users";
 import { withAuthRedirect } from "../hoc/AuthRedirect";
 import { compose } from "redux";
+import { getIsAuth, getLoggedUserId } from "../../redux/auth-selectors";
+import { getIsFetching, getPageNumber, getTotalUsers, getUsersList } from "../../redux/users-selectors";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -31,12 +33,12 @@ class UsersContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users,
-        isFetching: state.usersPage.isFetching,
-        pageNumber: state.usersPage.pageNumber,
-        totalUsers: state.usersPage.totalUsers,
-        isAuth: state.auth.isAuthorized,
-        loggedUserId: state.auth.userId
+        users: getUsersList(state),
+        isFetching: getIsFetching(state),
+        pageNumber: getPageNumber(state),
+        totalUsers: getTotalUsers(state),
+        isAuth: getIsAuth(state),
+        loggedUserId: getLoggedUserId(state)
     }
 }
 export default compose(
