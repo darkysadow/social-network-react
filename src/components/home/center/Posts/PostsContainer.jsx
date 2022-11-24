@@ -7,6 +7,7 @@ import pages1 from "./../../../../img/pages5.jpg"
 import pages2 from "./../../../../img/pages6.jpg";
 import pages3 from "./../../../../img/pages7.jpg";
 import media1 from "./../../../../img/korneplodMem.jpg";
+import { getPosts } from '../../../../redux/home-selectors';
 
 class PostsContainer extends React.Component {
     posts = [
@@ -28,7 +29,7 @@ class PostsContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        posts: state.homePage.posts
+        posts: getPosts(state)
     }
 }
 

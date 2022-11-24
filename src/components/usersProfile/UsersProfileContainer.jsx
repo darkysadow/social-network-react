@@ -6,6 +6,8 @@ import { getUserProfile, followUserInProfile, unfollowUserInProfile, setNewPostT
 import { Navigate, useParams } from "react-router-dom";
 import MainPreloader from './../common/MainPreloader.jsx'
 import { compose } from "redux";
+import { getIsAuth, getLoggedUserId } from "../../redux/auth-selectors";
+import { getIsFollowed, getNewPostText, getPosts, getProfileStatus, getUserInfo } from "../../redux/profile-selectors";
 
 
 class UsersProfileContainer extends React.Component {
@@ -60,13 +62,13 @@ let withRouter = (Component) => {
 
 let mapStateToProps = (state) => {
     return {
-        userInfo: state.profileUserPage.user,
-        newPostText: state.profileUserPage.newPostText,
-        posts: state.profileUserPage.posts,
-        isFollowed: state.profileUserPage.isFollowed,
-        status: state.profileUserPage.status,
-        isAuth: state.auth.isAuth,
-        loggedUserId: state.auth.userId,
+        userInfo: getUserInfo(state),
+        newPostText: getNewPostText(state),
+        posts: getPosts(state),
+        isFollowed: getIsFollowed(state),
+        status: getProfileStatus(state),
+        isAuth: getIsAuth(state),
+        loggedUserId: getLoggedUserId(state),
     }
 
 }

@@ -1,10 +1,11 @@
 import { addPost, setNewPostText } from "../../../../../redux/home-reducer";
 import InputForm from "./InputForm";
 import { connect } from "react-redux";
+import { getNewPostText } from "../../../../../redux/home-selectors";
 
 const mapStoreToProps = (state) => {
     return {
-        newPostText: state.homePage.newPostText
+        newPostText: getNewPostText(state)
     }
 }
 

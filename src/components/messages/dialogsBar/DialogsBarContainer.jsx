@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { setDialogsData } from "../../../redux/messages-reducer";
+import {getDialogsData} from '../../../redux/messages-selectors';
 import DialogsBar from "./DialogsBar"
 
 import ava1 from './../../../img/pages8.jpg';
@@ -35,7 +36,7 @@ class DialogsBarContainer extends React.Component {
 
 const mapStoreToProps = (state) => {
     return {
-        dialogsData: state.messagesPage.dialogsData
+        dialogsData: getDialogsData(state)
     }
 }
 

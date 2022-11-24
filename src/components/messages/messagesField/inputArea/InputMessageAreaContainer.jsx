@@ -2,6 +2,7 @@ import { sendMessage, setNewMessageText } from "../../../../redux/messages-reduc
 import InputMessageArea from "./InputMessageArea";
 import { connect } from 'react-redux';
 import React from "react";
+import { getNewMessageText } from "../../../../redux/messages-selectors";
 
 class InputMessageAreaContainer extends React.Component {
     render() {
@@ -13,7 +14,7 @@ class InputMessageAreaContainer extends React.Component {
 
 const mapStoreToProps = (state) => {
     return {
-        newMessageText: state.messagesPage.newMessageText
+        newMessageText: getNewMessageText(state)
     }
 }
 

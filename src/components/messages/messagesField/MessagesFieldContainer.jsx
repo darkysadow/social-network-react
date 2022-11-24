@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getMessagesData, getUserMessagesData } from '../../../redux/messages-selectors';
 import MessagesField from "./MessagesField";
 
 class MessagesFieldContainer extends React.Component {
@@ -12,8 +13,8 @@ class MessagesFieldContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        messagesData: state.messagesPage.messagesData,
-        userMessagesData: state.messagesPage.userMessagesData
+        messagesData: getMessagesData(state),
+        userMessagesData: getUserMessagesData(state)
     }
 }
 
